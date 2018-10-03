@@ -6,7 +6,8 @@ $('a').click(function(event) {
   let pos = $(event.target).position();
   let veiledning = $('#sekundær_boenhet');
 
-  veiledning.css({top: pos.top});
+  // se om det er mulig å legge til denne som CSS regel, funker ikke optimalt nå
+  //veiledning.css({top: pos.top});
 
   //console.log(veiledning.top);
   //console.log(veiledning.left);
