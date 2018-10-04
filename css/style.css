@@ -1,4 +1,51 @@
-/* Jumbotron styling */
-.jumbotron {
-  padding: 5px;
+/* Collapsible - Denne brukes når innholdet er skjult */
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+/* Legger til tekst etter content */
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "pluss" sign (+) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Visible - Denne brukes når innholdet er synlig */
+.visible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+/* Legger til minus når content er synlig */
+.visible:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/*Klassen content brukes i nedtrekkslistene */
+.content {
+  display: none;
+  background-color:#CCCCCC;
 }

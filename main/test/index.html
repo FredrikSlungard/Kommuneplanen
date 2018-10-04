@@ -6,17 +6,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!--CSS-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!--Javascript-->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
+
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
+  <!--CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -28,7 +32,11 @@
         <h2>Overskriften før enheten</h2>
         <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
         <p>Må prøve å få til at den passer med teksten</p>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
         <h2>Sekundær boenhet</h2>
         <p>Det tillates <a href="#sekundær_boenhet" data-toggle="collapse">sekundær boenhet</a> kun i tilknytning til
           enebolig, med mindre annet er
@@ -38,66 +46,45 @@
         </p>
       </div>
 
-      <!--Veiledning til sekundær boenhet-->
-      <div id="sekundær_boenhet" class="collapse col-md-6">
-        <div class="jumbotron">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#Sekundær_Integrert">Enebolig med integrert sekundær boenhet</a>
-              </h4>
-            </div>
+        <!--Veiledning til sekundær boenhet-->
+        <div id="sekundær_boenhet" class="collapse col-md-6">
 
-            <!--Innholdet til integret sekundær boenhet-->
-            <div id="Sekundær_Integrert" class="panel-collapse collapse">
-              <div class="panel-body">
-                <p>Frittliggende bygning, som er beregnet på én hovedbruksenhet, men som også
-                  inneholder én mindre boenhet med alle nødvendige romfunksjoner.</p>
+          <!--Innholdet til integrert sekundær boenhet-->
+          <button class="collapsible" id="Sekundær_Integrert">Enebolig med integrert sekundær boenhet</button>
 
-                <p>Sekundærboenheten er integrert i hovedbruksenheten(én bygning).</p>
-              </div>
-            </div>
+          <div class="content">
+            <p>Frittliggende bygning, som er beregnet på én hovedbruksenhet, men som også
+              inneholder én mindre boenhet med alle nødvendige romfunksjoner.</p>
 
-            <!--Innholdet til frittliggende sekundær boenhet-->
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#Sekundær_Frittliggende">Enebolig med frittliggende sekundær boenhet</a>
-              </h4>
-            </div>
-
-            <div id="Sekundær_Frittliggende" class="panel-collapse collapse">
-              <div class="panel-body">
-                <p>Frittliggende bygning, som er beregnet på én hovedbruksenhet, men hvor det på eiendommen også ligger
-                  én frittliggende mindre boenhet med alle nødvendige romfunksjoner.</p>
-              </div>
-            </div>
-
-            <!--Definisjonen av boenhet-->
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#Definisjon_Boenhet">Definisjon av boenhet</a>
-              </h4>
-            </div>
-
-            <div id="Definisjon_Boenhet" class="panel-collapse collapse">
-              <div class="panel-body">
-                <p>En selvstendig boenhet inneholder alle nødvendige hovedfunksjoner som oppholdsrom,
-                  kjøkken, bad og toalett, og har egen inngang, herunder inngang via hovedbruksenhets
-                  rom for kommunikasjon (inkludert trapp).</p>
-
-                <p>En selvstendig boenhet kan ha intern
-                  forbindelse til øvrige boenheter. Definisjonen gjelder både for nybygg og eksisterende
-                  bygg.</p>
-              </div>
-            </div>
-
+            <p>Sekundærboenheten er integrert i hovedbruksenheten(én bygning).</p>
           </div>
+
+          <!--Innholdet til frittliggende sekundær boenhet-->
+          <button class="collapsible" id="Sekundær_Frittliggende">Enebolig med frittliggende sekundær boenhet</button>
+
+          <div class="content">
+            <p>Frittliggende bygning, som er beregnet på én hovedbruksenhet, men hvor det på eiendommen også ligger
+              én frittliggende mindre boenhet med alle nødvendige romfunksjoner.</p>
+          </div>
+
+          <button class="collapsible" id="Definisjon_Boenhet">Definisjon av boenhet</button>
+
+          <div class="content">
+            <p>En selvstendig boenhet inneholder alle nødvendige hovedfunksjoner som oppholdsrom,
+              kjøkken, bad og toalett, og har egen inngang, herunder inngang via hovedbruksenhets
+              rom for kommunikasjon (inkludert trapp).</p>
+
+            <p>En selvstendig boenhet kan ha intern
+              forbindelse til øvrige boenheter. Definisjonen gjelder både for nybygg og eksisterende
+              bygg.</p>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 
-  <script src="./get_pos.js"></script>
+  <script src="../../js/søk/load.js"></script>
 
 </body>
 

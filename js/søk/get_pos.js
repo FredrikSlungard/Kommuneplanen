@@ -9,6 +9,7 @@ $('a').click(function(event) {
   // se om det er mulig å legge til denne som CSS regel, funker ikke optimalt nå
   //veiledning.css({top: pos.top});
 
+
   //console.log(veiledning.top);
   //console.log(veiledning.left);
   //console.log(pos.top);
