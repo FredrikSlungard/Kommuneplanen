@@ -1,13 +1,19 @@
-/* Leter gjennom en html fil med tekst og legger til en <a> tag hvis ordet matcher. Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
+/* Leter gjennom en html fil med tekst og legger til en <a> tag med hyperlenke hvis ordet matcher. 
+
+Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
 
 // Finner ordene som skal erstattes i dokumentet
-let doc = $('body')  //'/../main/test/index.html';
+let all_para = $('p');
 let søk_etter = 'sekundær boenhet';
 
-let new_content = doc.html().replace('/' + søk_etter +'/g', '<b>' + søk_etter + '</b>');
+all_para.each(function () {
+  let para = $(this);
 
-doc.html(new_content);
+  if (para.is(":visible")) {
+    para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#sekundær_boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
+  }
+  console.log("OK");
+});
 
 
-//$('<b>' + søk_etter + '</b>')  //
-//$('p:contains(' + søk_etter + ')').css('text-decoration' , 'underline');
+//doc.html(doc.html().replace(/sekundær boenhet/ig, '<a href="#sekundær_boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
