@@ -16,27 +16,20 @@ Legg_Til_Lenke = (doc) => {
 Add_Hover = (doc) => {
   doc.each(function () {
     let para = $(this);
-  
+    
     if (!$(para).closest('a').length) {
-      para.html(para.html().replace(/hovedbruksenheten/ig, '<a href="#" data-toggle="tooltip"  data-placement="top" title="Hooray!">hovedbruksenheten</a>'));
+      
+      para.html(para.html().replace(/hovedbruksenhet/ig, '<a href="#" title="Definisjon av hovedbruksenhet" data-toggle="popover" data-trigger="click" data-content="Tilsvarer enebolig med integrert sekundær boenhet">hovedbruksenhet</a>'));
+
     };
   });
-};
 
+  $('[data-toggle="popover"]').popover();
+
+};
 
 let all_para = $('p');
 let søk_etter = 'sekundær boenhet';
 
 Legg_Til_Lenke(all_para);
 Add_Hover(all_para)
-
-
-/* const instance = new Tooltip(referenceElement, {
-  title: "Hey there",
-  trigger: "click",
-});
-instance.hide();
-
-var popper = new Popper(referenceElement, onBottomPopper, {
-  placement: 'bottom'
-}); */
