@@ -1,0 +1,66 @@
+/* Collapsible - Denne brukes når innholdet er skjult */
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+/* Legger til tekst etter content */
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "pluss" sign (+) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Visible - Denne brukes når innholdet er synlig */
+.visible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+/* Legger til minus når content er synlig */
+.visible:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/*Klassen content brukes i nedtrekkslistene */
+.content {
+  display: none;
+  background-color:#CCCCCC;
+}
+
+/* Hyperlenker */
+a:link    { color: #c00 }  /* unvisited links */
+a:visited { color: #2200CC}  /* visited links   */
+a:hover   { color: #00c }  /* user hovers     */
+a:active  { color: #ccc }  /* active links    */
+
+/* Popover style */
+.popover-header {
+    background-color: #777;
+    color: white;
+}
+.popover-body {
+    background-color:#CCCCCC;
+}
