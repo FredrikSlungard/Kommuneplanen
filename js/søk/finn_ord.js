@@ -1,13 +1,15 @@
 /* Leter gjennom en html fil med tekst og legger til en <a> tag med hyperlenke hvis ordet matcher. 
 
 Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
+let all_para = $('p');
+
 // Finner ordene som skal erstattes i dokumentet
 Legg_Til_Lenke = (doc) => {
   doc.each(function () {
     let para = $(this);
   
     if (para.is(":visible")) {
-      para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
+      para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
     }
   });
 };
@@ -30,8 +32,6 @@ Add_Hover = (doc) => {
 
 };
 
-let all_para = $('p');
-let søk_etter = 'sekundær boenhet';
-
+// Legger til lenker og hoverboks for ord (se finn ord)
 Legg_Til_Lenke(all_para);
-Add_Hover(all_para)
+Add_Hover(all_para);
