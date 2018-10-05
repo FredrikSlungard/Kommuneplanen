@@ -55,3 +55,12 @@ a:link    { color: #c00 }  /* unvisited links */
 a:visited { color: #2200CC}  /* visited links   */
 a:hover   { color: #00c }  /* user hovers     */
 a:active  { color: #ccc }  /* active links    */
+
+/* Popover style */
+.popover-header {
+    background-color: #777;
+    color: white;
+}
+.popover-body {
+    background-color:#CCCCCC;
+}

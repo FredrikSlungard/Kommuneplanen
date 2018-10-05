@@ -7,19 +7,21 @@ Legg_Til_Lenke = (doc) => {
     let para = $(this);
   
     if (para.is(":visible")) {
-      para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#sekundær_boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
+      para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
     }
   });
 };
 
-// Legger til en hoverbox over ordet (hvis det ikke er en lenke fra før)
+// Legger til en popover i ordet med mindre det er en lenke fra før og teksten ikke er synlig
 Add_Hover = (doc) => {
   doc.each(function () {
     let para = $(this);
-    
-    if (!$(para).closest('a').length) {
+    let text = '"Enebolig med integrert sekundær boenhet"';
+
+    // Legg til hvis det ikke er en lenke fra før og teksten er synlig
+    if (!$(para).closest('a').length && para.is(":visible")) {
       
-      para.html(para.html().replace(/hovedbruksenhet/ig, '<a href="#" title="Definisjon av hovedbruksenhet" data-toggle="popover" data-trigger="click" data-content="Tilsvarer enebolig med integrert sekundær boenhet">hovedbruksenhet</a>'));
+      para.html(para.html().replace(/hovedbruksenhet/ig, '<a href="#" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Definisjon av hovedbruksenhet" data-content=' + text + '>hovedbruksenhet</a>'));
 
     };
   });
