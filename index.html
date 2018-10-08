@@ -34,22 +34,53 @@
         <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
 
         <h2>Støyfølsomt bruk</h2>
-        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet inneholder støy</p>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+
+        <h2>Støyfølsomt bruk</h2>
+        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
+          inneholder støy</p>
+      </div>
+
+      <div class="row" id="rad_sekundær_boenhet">
+            <script>
+              $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
+            </script>
+      </div>
+
+  
+
     </div>
 
-    <div class="row" id="rad_sekundær_boenhet">
-    </div>
-
+    <!--Finner matchende ord i filen-->
     <script>
-      $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
+      $.getScript("/js/søk/finn_ord.js");
     </script>
 
-  </div>
-
-  <!--Finner matchende ord i filen-->
-  <script>
-    $.getScript("/js/søk/finn_ord.js");
-  </script>
+    <!--Legger til event som flytter innholdet til der hyperlenken er-->
+    <script>
+      $.getScript("/js/eventer/hyperlink_click.js");
+    </script>
 
 
 </body>

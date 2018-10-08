@@ -3,9 +3,9 @@
 Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
 let all_para = $('p');
 let expressions = {
-  'sekundær boenhet': [/sekundær boenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>'],
+  'sekundær boenhet': [/sekundær boenhet/ig, '<a class = "intern_lenke" href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>'],
 
-  'hovedbruksenhet ': [/hovedbruksenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">hovedbruksenhet</a>']
+  'hovedbruksenhet ': [/hovedbruksenhet/ig, '<a class = "intern_lenke" href="#veil_Sekundær_Boenhet" data-toggle="collapse">hovedbruksenhet</a>']
 };
 
 /* Finner ordene som skal erstattes i dokumentet, det forutsettes da at dokumentet er lastet inn på forhånd. 
@@ -17,18 +17,18 @@ look_for = Dictionary med søkefrase der:
 Legg_Til_Lenke = (doc, look_for) => {
 
   // Gå gjennom alle søkeørdene
-  for (let key in look_for){
+  for (let key in look_for) {
     let reg_exp = look_for[key][0];
     let HTML_command = look_for[key][1];
 
-  // Gå gjennom alle paragrafene og sjekk om den er synlig
-  doc.each(function () {
-    let para = $(this);
+    // Gå gjennom alle paragrafene og sjekk om den er synlig
+    doc.each(function () {
+      let para = $(this);
 
-    if (para.is(":visible")) {
-      para.html(para.html().replace(reg_exp, HTML_command));
-    }
-  });  
+      if (para.is(":visible")) {
+        para.html(para.html().replace(reg_exp, HTML_command));
+      }
+    });
   };
 };
 
