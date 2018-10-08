@@ -1,17 +1,12 @@
 /* Flytter innholdet som skal vises når brukeren trykker på interne hyperlenker.
-Det er en forutsetning hyperlenken er en del av klassen (class = "intern_lenke"*/
+Det er en forutsetning hyperlenken er en del av klassen (class = "intern_lenke"
+
+Finner den nærmeste paragrafen (denne) og setter
+*/
 $('.intern_lenke').on('click', function (event) {
+  let referanse = $(this).attr("href"); // referansen til itemet som trykkes på
+  let Scroll_To = $(referanse)[0]; // Nedtrekkslisten som blir synlig
 
-  event.preventDefault();
-  let referanse = $(this).attr("href");
-  let Scroll_To = $(referanse)[0];
-
-  console.log(referanse);
-
-  Scroll_To.scrollIntoView(true);
-  //console.log(referanse)
-
-  //let pos = $(this).offset().top;
-  //let source_pos = $(this).offset().top;
-
+  let Closest_Para = $(this).closest('p');
+  $(Scroll_To).insertAfter($(Closest_Para));
 });

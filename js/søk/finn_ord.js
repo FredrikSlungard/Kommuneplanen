@@ -1,4 +1,6 @@
-/* Leter gjennom en html fil med tekst og legger til en <a> tag med hyperlenke hvis ordet matcher. 
+/* Leter gjennom en html fil med tekst og legger til en <a> tag med hyperlenke hvis ordet matcher.
+
+Data-toggle bestemmer hva som skjer, hvis den er usynlig fra før blir den synlig. Hvis den er synlig skjules den.
 
 Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
 let all_para = $('p');
