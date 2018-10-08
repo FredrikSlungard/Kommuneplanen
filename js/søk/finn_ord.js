@@ -2,36 +2,35 @@
 
 Den legger kun til slike lenger hvis teksten er en del av en paragraf <p> */
 let all_para = $('p');
+let expressions = {
+  'sekundær boenhet': [/sekundær boenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>'],
 
-// Finner ordene som skal erstattes i dokumentet
-Legg_Til_Lenke = (doc) => {
-  doc.each(function () {
-    let para = $(this);
-  
-    if (para.is(":visible")) {
-      para.html(para.html().replace(/sekundær boenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>')); 
-    }
-  });
+  'hovedbruksenhet ': [/hovedbruksenhet/ig, '<a href="#veil_Sekundær_Boenhet" data-toggle="collapse">hovedbruksenhet</a>']
 };
 
-// Legger til en popover i ordet med mindre det er en lenke fra før og teksten ikke er synlig
-Add_Hover = (doc) => {
+/* Finner ordene som skal erstattes i dokumentet, det forutsettes da at dokumentet er lastet inn på forhånd. 
+Doc = Paragrafer som skal letes gjennom
+look_for = Dictionary med søkefrase der:
+  index 0 = regexp
+  index 1 = ny HTML som skal settes inn.
+*/
+Legg_Til_Lenke = (doc, look_for) => {
+
+  // Gå gjennom alle søkeørdene
+  for (let key in look_for){
+    let reg_exp = look_for[key][0];
+    let HTML_command = look_for[key][1];
+
+  // Gå gjennom alle paragrafene og sjekk om den er synlig
   doc.each(function () {
     let para = $(this);
-    let text = '"Enebolig med integrert sekundær boenhet"';
 
-    // Legg til hvis det ikke er en lenke fra før og teksten er synlig
-    if (!$(para).closest('a').length && para.is(":visible")) {
-      
-      para.html(para.html().replace(/hovedbruksenhet/ig, '<a href="#" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Definisjon av hovedbruksenhet" data-content=' + text + '>hovedbruksenhet</a>'));
-
-    };
-  });
-
-  $('[data-toggle="popover"]').popover();
-
+    if (para.is(":visible")) {
+      para.html(para.html().replace(reg_exp, HTML_command));
+    }
+  });  
+  };
 };
 
 // Legger til lenker og hoverboks for ord (se finn ord)
-Legg_Til_Lenke(all_para);
-Add_Hover(all_para);
+Legg_Til_Lenke(all_para, expressions);
