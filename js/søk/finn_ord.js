@@ -7,7 +7,9 @@ let all_para = $('p');
 let expressions = {
   'sekundær boenhet': [/sekundær boenhet/ig, '<a class = "intern_lenke" href="#veil_Sekundær_Boenhet" data-toggle="collapse">sekundær boenhet</a>'],
 
-  'hovedbruksenhet ': [/hovedbruksenhet/ig, '<a class = "intern_lenke" href="#veil_Sekundær_Boenhet" data-toggle="collapse">hovedbruksenhet</a>']
+  'hovedbruksenhet ': [/hovedbruksenhet/ig, '<a class = "intern_lenke" href="#veil_Sekundær_Boenhet" data-toggle="collapse">hovedbruksenhet</a>'],
+
+  'fortetting ': [/fortetting/ig, '<a class = "intern_lenke" href="#veil_fortetting" data-toggle="collapse">fortetting</a>']
 };
 
 /* Finner ordene som skal erstattes i dokumentet, det forutsettes da at dokumentet er lastet inn på forhånd. 

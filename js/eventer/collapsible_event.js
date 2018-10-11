@@ -9,6 +9,7 @@ sikrer vi at den enten fjerner collapsible eller visible og legger til vica vers
 $('.collapsible').on('click', function () {
 
   let content = $(this).next('.content');
+  
   //Denne MÅ komme før slideToggle
   if (content.is(":hidden")) {
     $(this).toggleClass("collapsible visible");

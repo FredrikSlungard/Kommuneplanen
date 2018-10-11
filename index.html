@@ -28,7 +28,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <h2>Overskriften før enheten</h2>
         <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
         <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
@@ -46,47 +46,30 @@
           inneholder støy</p>
 
         <h2>Støyfølsomt bruk</h2>
-        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-          inneholder støy</p>
+        <p>Sekundær boenhet</p>
 
-        <h2>Støyfølsomt bruk</h2>
-        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-          inneholder støy</p>
+        <h2>Fortetting</h2>
+        <p>Dette er da et eskempel på fortetting utover gjeldende plan</p>
 
-        <h2>Støyfølsomt bruk</h2>
-        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-          inneholder støy</p>
-
-        <h2>Støyfølsomt bruk</h2>
-        <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-          inneholder støy</p>
       </div>
 
-      <div class="col-md-6">
-        <h2>Yelooo</h2>
-        <p>Det må da være en måte å få den hit på?</p>
-      </div>
-
+      <div class="col-md-8">
       <div id="rad_sekundær_boenhet">
-            <script>
-              $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
-            </script>
+        <script>
+          $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær enhet.html");
+        </script>
+      </div>
       </div>
 
-  
+      <!--Finner matchende ord i filen-->
+      <script>
+        $.getScript("/js/søk/finn_ord.js");
+      </script>
 
-    </div>
-
-    <!--Finner matchende ord i filen-->
-    <script>
-      $.getScript("/js/søk/finn_ord.js");
-    </script>
-
-    <!--Legger til event som flytter innholdet til der hyperlenken er-->
-    <script>
-      $.getScript("/js/eventer/hyperlink_click.js");
-    </script>
-
+      <!--Legger til event som flytter innholdet til der hyperlenken er-->
+      <script>
+        $.getScript("/js/eventer/hyperlink_click.js");
+      </script>
 
 </body>
 
