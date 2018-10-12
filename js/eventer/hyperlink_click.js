@@ -11,35 +11,40 @@ $('.intern_lenke').on('click', function (event) {
 
   // Sjekker om ID eksiterer, hvis ikke lastes siden inn
   if (Scroll_To == null) {
-    $(Closest_Para).load(Filbane(this.text));
+    Lag_Innhold((this.text), Closest_Para);
   };
 
-  $(Scroll_To).insertAfter($(Closest_Para));
+  $(Scroll_To).insertAfter($(Closest_Para)); 
 });
+
+
+// Lager HTML strengen som skal settes inn hvis innholdet ikke er lastet inn
+// Ord = Ordet brukeren ser
+// Sett_Inn_Etter = Paragrafen eller div som det skal settes inn etter
+Lag_Innhold = (Ord, Sett_Inn_Etter) => {
+  let url = Filbane(Ord);
+
+  // Må vente til etter call er ferdig, hvis ikke returneres undefined
+  Sett_Inn_HTML = (data) => {
+    $(data).insertAfter($(Sett_Inn_Etter));
+  };
+
+  $.get(url, Sett_Inn_HTML);
+
+};
 
 // Liste over filbaner og id til nedtrekkslistene
 // Ord = ordet/teksten som brukeren ser
 Filbane = (Ord) => {
   let Fldr = '/main/veiledning/definisjoner/';
   let dict = {
-    'sekundær boenhet': Fldr + 'sekundær boenhet.html',
-    'fortetting': Fldr + 'fortetting.html'
+    'sekundær boenhet': 'main/bestemmelser/sekundær_boenhet.html',
+    'fortetting': Fldr + 'fortetting.html',
+    'hovedbruksenhet': Fldr + 'hovedbruksenhet.html'
   };
 
   let key = Ord.toLowerCase();
+
   return dict[key];
 
 };
-
-
-/* <div id="rad_sekundær_boenhet">
-  <script>
-    $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
-  </script>
-</div>
-name = $(this).text();
-  if($("#" + name).length == 0) {
-    $("div#chatbar").append("<div class='labels'><div id='" + name + "' style='display:none;'></div>" + name + "</div>");
-  } else {
-    alert('this record already exists');
-  } */

@@ -13,5 +13,18 @@ I disse tekstbolkene kan det også være hyperlenker til relevante lovverk eller
 Generelt bør lenkene ikke vise videre til lovverk, og heller forklare hva loven sier/hvordan den skal brukes.
 ## Interne lenker
 Brukes hvis det er beskrivelser som peker tilbake på andre bestemmelser/dokumenter, f.eks. sekundære boenheter, vei- og gatenormalen osv.
+Beskrivelsen vises som en expandable under paragrafen når du trykker på ordet/lenken.
 
-Beskrivelsen vises som en expandable til høyre når du trykker på ordet/lenken.
+# Oppbygging
+Programmet er bygd slik at bestemmelsene vises, mens veiledninger/definisjoner vises etterhvert som de blir relevante.
+
+## Veiledninger
+I den grad definisjonene og veiledningene kan knyttes direkte til en bestemmelse ligger de i samme HTML fil.
+Hvis ikke er beskrivelsen trukket ut som en egen HTML med beskrivelse.
+
+## Klasser
+Liste over de ulikene klassene som brukes i CSS/HTML og jQuery:
+
+* **Collapse** beskriver selve containeren til listen
+* **Collapsible** er knappen som trykkes på for å vise beskrivelse til listen, underordnet collapse
+

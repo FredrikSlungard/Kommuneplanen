@@ -17,7 +17,6 @@ $('.collapsible').on('click', function () {
   else {
     $(this).toggleClass("collapsible visible");
   }
-
   // Skjuler/Viser innholdet
   content.slideToggle('fast');
 
