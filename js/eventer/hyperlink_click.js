@@ -6,29 +6,31 @@ Finner den nærmeste paragrafen (denne) og setter inn innholdet etter paragrafen
 $('.intern_lenke').on('click', function (event) {
 
   let referanse = $(this).attr("href"); // Referansen til itemet som trykkes på
-  let Scroll_To = $(referanse)[0]; // Nedtrekkslisten som blir synlig
+  let Destinasjon = $(referanse)[0]; // Nedtrekkslisten som blir synlig
   let Closest_Para = $(this).closest('p'); // Nærmeste paragraf
 
-  // Sjekker om ID eksiterer, hvis ikke lastes siden inn
-  if (Scroll_To == null) {
-    Lag_Innhold((this.text), Closest_Para);
+  // Sjekker om ID eksiterer, 
+  if (Destinasjon != null) {
+    $(Destinasjon).insertAfter($(Closest_Para, referanse));
+  }
+
+  // Last inn HTML innholdet på siden hvis Destinasjon ikke eksisterer
+  else{
+    Lag_Innhold((this.text), Closest_Para, referanse, Destinasjon)
   };
-
-  $(Scroll_To).insertAfter($(Closest_Para)); 
 });
-
 
 // Lager HTML strengen som skal settes inn hvis innholdet ikke er lastet inn
 // Ord = Ordet brukeren ser
 // Sett_Inn_Etter = Paragrafen eller div som det skal settes inn etter
-Lag_Innhold = (Ord, Sett_Inn_Etter) => {
+Lag_Innhold = (Ord, Sett_Inn_Etter, ref, Destinasjon) => {
   let url = Filbane(Ord);
 
   // Må vente til etter call er ferdig, hvis ikke returneres undefined
   Sett_Inn_HTML = (data) => {
-    $(data).insertAfter($(Sett_Inn_Etter));
+    $(data).insertAfter($(Sett_Inn_Etter, ref));
   };
-
+  
   $.get(url, Sett_Inn_HTML);
 
 };
