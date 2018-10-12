@@ -9,7 +9,6 @@ $('.intern_lenke').on('click', function (event) {
   let Scroll_To = $(referanse)[0]; // Nedtrekkslisten som blir synlig
   let Closest_Para = $(this).closest('p'); // Nærmeste paragraf
 
-  
   // Sjekker om ID eksiterer, hvis ikke lastes siden inn
   if (Scroll_To == null) {
     $(Closest_Para).load(Filbane(this.text));
