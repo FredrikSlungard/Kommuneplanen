@@ -76,10 +76,3 @@ a:active  { color: #ccc }  /* active links    */
 .navmenu a:hover {
   color: #f1f1f1;
 }
-
-@media (min-width: 992px) {
-  body {
-    padding-left: 300px;
-  }
-}
-

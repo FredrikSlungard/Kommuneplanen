@@ -33,62 +33,28 @@
 </head>
 
 <body>
-  <nav class="navmenu navmenu-inverse navmenu-fixed-left" role="navigation">
-    <div id="nav_innhold">
-      <!--Innholdet lastes inn til slutt (må ha oversikt over alle overskrifter i dokumentet først-->
-    </div>
-  </nav>
-
   <div class="container-fluid">
-    <div id="main" class="col-md-12">
-      <h2>Overskriften før enheten</h2>
-      <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
-      <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
+    <div class="row">
 
-      <h2>Støyfølsomt bruk</h2>
-      <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-        inneholder støy</p>
-
-      <h2>Sekundær boenhet</h2>
-      <p>Sekundær boenhet</p>
-
-      <h2>Fortetting</h2>
-      <p>Dette er da et eskempel på fortetting utover gjeldende plan</p>
-
-      <h2 id="Test_ID2">En annen overskrift</h2>
-      <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
-      <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
-
-      <h2>Støyfølsomt bruk again?</h2>
-      <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-        inneholder støy</p>
-
-      <h2>Sekundær boenhet igjen?</h2>
-      <p>Sekundær boenhet</p>
-
-      <h2>Fortetting alle asmmen</h2>
-      <p>Dette er da et eskempel på fortetting utover gjeldende plan</p>
-
-      <h2 id="Test_ID3">Overskriften før enheten 445</h2>
-      <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
-      <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
-
-      <h2>Støyfølsomt bruk eksempel</h2>
-      <p>Paragraf for å sjekke om den oppdager rom for støyfølsomt bruk, og om det holder avt deler eller hele ordet
-        inneholder støy</p>
-
-      <h2>Sekundær boenhet igjen og igjen</h2>
-      <p>Sekundær boenhet</p>
-
-      <h2>Fortetting Her går det unna</h2>
-      <p>Dette er da et eskempel på fortetting utover gjeldende plan</p>
-
-      <div id="rad_sekundær_boenhet">
-        <script>
-          $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
-        </script>
+      <div class="col-md-3">
+        <nav class="navmenu navmenu-inverse navmenu-fixed-left" role="navigation">
+          <div id="nav_innhold">
+            <!--Innholdet lastes inn til slutt (må ha oversikt over alle overskrifter i dokumentet først-->
+          </div>
+        </nav>
       </div>
 
+      <div class="col-md-9" id="main">
+
+          <div id="rad_sekundær_boenhet">
+            <script>
+              $("#rad_sekundær_boenhet").load("/main/bestemmelser/sekundær_enhet.html");
+            </script>
+          </div>
+
+      </div>
+
+      <!--Slutt på klasse row-->
     </div>
   </div>
 

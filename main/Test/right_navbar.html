@@ -1,68 +1,28 @@
-<div class="d-none d-xl-block col-xl-2 bd-toc">
-  <ul class="section-nav">
-    <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-    <li class="toc-entry toc-h2"><a href="#form-controls">Form controls</a>
-      <ul>
-        <li class="toc-entry toc-h3"><a href="#sizing">Sizing</a></li>
-        <li class="toc-entry toc-h3"><a href="#readonly">Readonly</a></li>
-        <li class="toc-entry toc-h3"><a href="#readonly-plain-text">Readonly plain text</a></li>
-      </ul>
-    </li>
-    <li class="toc-entry toc-h2"><a href="#checkboxes-and-radios">Checkboxes and radios</a>
-      <ul>
-        <li class="toc-entry toc-h3"><a href="#default-stacked">Default (stacked)</a></li>
-        <li class="toc-entry toc-h3"><a href="#inline">Inline</a></li>
-        <li class="toc-entry toc-h3"><a href="#without-labels">Without labels</a></li>
-      </ul>
-    </li>
-    <li class="toc-entry toc-h2"><a href="#layout">Layout</a>
-      <ul>
-        <li class="toc-entry toc-h3"><a href="#form-groups">Form groups</a></li>
-        <li class="toc-entry toc-h3"><a href="#form-grid">Form grid</a>
-          <ul>
-            <li class="toc-entry toc-h4"><a href="#form-row">Form row</a></li>
-            <li class="toc-entry toc-h4"><a href="#horizontal-form">Horizontal form</a></li>
-            <li class="toc-entry toc-h4"><a href="#column-sizing">Column sizing</a></li>
-            <li class="toc-entry toc-h4"><a href="#auto-sizing">Auto-sizing</a></li>
-          </ul>
-        </li>
-        <li class="toc-entry toc-h3"><a href="#inline-forms">Inline forms</a></li>
-      </ul>
-    </li>
-    <li class="toc-entry toc-h2"><a href="#help-text">Help text</a></li>
-    <li class="toc-entry toc-h2"><a href="#disabled-forms">Disabled forms</a>
-      <ul>
-        <li class="toc-entry toc-h4"><a href="#cross-browser-compatibility">Cross-browser compatibility</a></li>
-      </ul>
-    </li>
-    <li class="toc-entry toc-h2"><a href="#validation">Validation</a>
-      <ul>
-        <li class="toc-entry toc-h3"><a href="#how-it-works">How it works</a></li>
-        <li class="toc-entry toc-h3"><a href="#custom-styles">Custom styles</a></li>
-        <li class="toc-entry toc-h3"><a href="#browser-defaults">Browser defaults</a></li>
-        <li class="toc-entry toc-h3"><a href="#server-side">Server side</a></li>
-        <li class="toc-entry toc-h3"><a href="#supported-elements">Supported elements</a></li>
-        <li class="toc-entry toc-h3"><a href="#tooltips">Tooltips</a></li>
-      </ul>
-    </li>
-    <li class="toc-entry toc-h2"><a href="#custom-forms">Custom forms</a>
-      <ul>
-        <li class="toc-entry toc-h3"><a href="#checkboxes-and-radios-1">Checkboxes and radios</a>
-          <ul>
-            <li class="toc-entry toc-h4"><a href="#checkboxes">Checkboxes</a></li>
-            <li class="toc-entry toc-h4"><a href="#radios">Radios</a></li>
-            <li class="toc-entry toc-h4"><a href="#inline-1">Inline</a></li>
-            <li class="toc-entry toc-h4"><a href="#disabled">Disabled</a></li>
-          </ul>
-        </li>
-        <li class="toc-entry toc-h3"><a href="#select-menu">Select menu</a></li>
-        <li class="toc-entry toc-h3"><a href="#file-browser">File browser</a>
-          <ul>
-            <li class="toc-entry toc-h4"><a href="#translating-or-customizing-the-strings">Translating or customizing
-                the strings</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
+<div id="app" class="container">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricingg</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/register') }}">Register</a>
+      </li>
+    </ul>
+  </nav>
 </div>
