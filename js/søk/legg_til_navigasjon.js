@@ -3,15 +3,16 @@ Legg_Til_Overskrift = () => {
 
   let destinasjon = $('#nav_innhold');
   let Overskrifter = $('h2');
-  let innhold = '';
+  let innhold = '<ul class="navmenu-nav"';
 
   destinasjon.empty();
   $.each(Overskrifter, function (index, value) {
-
-    innhold += '<a class="nav_Clickable" href="#">' + $(this).text() + '</a>';
+    innhold += '<li><a class="nav_Clickable" href="#">' + $(this).text() + '</a></li>';
     //console.log($(this).url);
 
   });
+
+  innhold += '</ul>'
 
   $(innhold).insertAfter($(destinasjon));
 };
@@ -41,4 +42,3 @@ $('.nav_Clickable').on('click', function () {
   };
 
 });
-

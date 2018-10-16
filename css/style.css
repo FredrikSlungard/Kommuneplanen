@@ -65,36 +65,21 @@ a:active  { color: #ccc }  /* active links    */
     background-color:#CCCCCC;
 }
 
-/* Styling på navigasjonen */
-.sidenav {
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
+/* Side navigation style */
+.navmenu a {
   text-decoration: none;
-  font-size: 0.8em;
   color: #818181;
   display: block;
 }
 
-.sidenav a:hover {
+.navmenu a:hover {
   color: #f1f1f1;
 }
 
-/* Skjuler sidenav på små devices */
-@media (max-width: 768px) {
-  #sidebar {
-      margin-left: -250px;
-  }
-  #sidebar.active {
-      margin-left: 0;
+@media (min-width: 992px) {
+  body {
+    padding-left: 300px;
   }
 }
+
