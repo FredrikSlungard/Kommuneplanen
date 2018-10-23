@@ -16,15 +16,20 @@ $(function() {
     '13_samfunnssikkerhet'
   ];
 
-  let Path = '';
-  let Content
-
   // Gå gjennom alle filene som skal lastes inn
-  $.each(Filer, function (index, value) {
-    
-
-  });
+  let Path = '';
   
+  $.each(Filer, function (index, value) {
+    Path = Fldr + value + '.html';
 
+    $.get(Path, function(data) {
+
+      $(data).appendTo('#innhold')
+      //content =+ $(data);
+
+    });
+  });
+
+  //$(content).appendTo('#innhold')
 
 });

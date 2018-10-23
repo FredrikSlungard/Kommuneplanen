@@ -5,7 +5,7 @@ $(function () {
   'user strict'
 
   // Konstanter som ikke endres underveis (vil ikke søke i nedtrekkslister)
-  const Doc_Content = $('p, :header');
+  let Doc_Content = $('p, :header');
   const Dest_Treff = $('#søke_treff');
 
   // Returnerer treffene i dokumentet

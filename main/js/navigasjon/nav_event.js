@@ -59,7 +59,6 @@ $(function () {
       // Viser resultatene som matcher (oppdaterer søket etterhver)
       $('li:def_contains("' + Search_Prase + '"), .nav_clickable:def_contains("' + Search_Prase + '")')
         .show();
-
     };
 
   });
