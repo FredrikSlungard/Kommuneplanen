@@ -13,7 +13,7 @@ $(function () {
 
     // Laster inn hovedinnholdet
     // $('#innhold').load('/main/html/bestemmelser/1_plankrav.html') - Denne fungerer fint
-    $.get('/main/js/load_main_content.js');
+    $.get('/main/js/load_main_content.js'); // Denne fungerer ikke
   };
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */
