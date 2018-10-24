@@ -9,7 +9,6 @@ $(function() {
   let Overskrifter = $('h1, h2');
   let innhold = '';
   let Tekst = '';
-  let Navn = '';
 
   destinasjon.empty(); // Fjerner gammelt innhold i div, f.eks. testeverdier etc.
 

@@ -4,32 +4,17 @@
 $(function () {
   'use strict'
 
-  let Overskrifter = $('h1,h2');
-
   $('.nav_clickable').on('click', function () {
 
-    let Søk_Etter = $(this).text();
     let Destinasjon = 0;
-    let Sel_Header = $();
     const windowHeight = $(window).height();
 
     // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
-    let Result = Overskrifter.filter(function () {
-      
-      if ($(this).text().indexOf(Søk_Etter) !== -1) {
-        return $(this).text; 
-      };
-    });
-
-    // Velger destinasjon utifra antall treff, ved flere treff velges den øverste
-    if (Result.length === 1) {
-      Sel_Header = Result;
-      Destinasjon = $(Result).offset().top;
+    let Result = Returner_Første_Treff($(this).text(), $('h1,h2'))
+    
+    if (Result != undefined) {
+      Destinasjon = $(Result).offset().top
     }
-    else if (Result.length >= 1){
-      Sel_Header = Result[0];
-      Destinasjon = $(Sel_Header).offset().top;
-    };
 
     // Gjør at den scroller til midten av siden hvis overskriften er lavere enn
     // høyden på vinduet
@@ -43,7 +28,7 @@ $(function () {
         scrollTop: (Destinasjon)
       }, 1000);
 
-      $(Sel_Header).effect( "highlight", {color:"#669966"}, 3000 );
+      $(Result).effect( "highlight", {color:"#669966"}, 3000 );
     };
 
   });

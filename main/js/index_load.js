@@ -56,6 +56,7 @@ $(function () {
     // Egne pseudo-funksjoner og add-in for highlight
     $.get('/main/js/funksjoner/pseudo_exp.js');
     $.get('/main/js/funksjoner/highlight.js')
+    $.get('/main/js/funksjoner/finn_ord.js')
 
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');

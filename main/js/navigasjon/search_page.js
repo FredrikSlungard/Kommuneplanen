@@ -53,7 +53,7 @@ $(function () {
   $('#søke_treff').on('click', function (event) {
     let windowHeight = $(window).height();
     let Item = $(event.target);
-
+    let Result = Returner_Første_Treff($(event.target).text(), Doc_Content);
     
     if (Item != undefined) {
       // Gjør at den scroller til midten av siden hvis overskriften er lavere enn høyden på vinduet
@@ -67,7 +67,7 @@ $(function () {
         scrollTop: (Destinasjon)
       }, 1000);
 
-      $(Item).effect( "highlight", {color:"#669966"}, 3000 );
+      $(Result).effect( "highlight", {color:"#669966"}, 3000 );
 
     }
   });
