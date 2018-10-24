@@ -1,8 +1,42 @@
 // Script som kjører når siden lastes inn
 $(function () {
 
+  // Innholdet i hoveddelen
+  Hoved_Innholdet = () => {
+    'user strict';
+
+    let Fldr = '/main/html/bestemmelser/';
+    let Filer = [
+      '1_plankrav',
+      '2_rekkefølgekrav',
+      '4_forhold_gjeldende_plan',
+      '5_kulturminne_kulturmiljø',
+      '6_grønnstruktur',
+      '7_vassdrag naturmiljø',
+      '8_strandsone og brygge',
+      '12_transport_parkering',
+      '13_samfunnssikkerhet'
+    ];
+
+    // Gå gjennom alle filene som skal lastes inn
+    let Path = '';
+
+    $.each(Filer, function (index, value) {
+      Path = Fldr + value + '.html';
+
+      $.get(Path, function (data) {
+
+        $(data).appendTo('#innhold')
+
+      });
+    });
+  };
+
+
+
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
+    'use strict'
     let Nav_Fldr = '/main/html/navbar/';
 
     // Laster inn innholdet som skal være i navigasjonbarene.
@@ -12,8 +46,7 @@ $(function () {
     $('#right_navbar').load(Nav_Fldr + 'right_nav.html');
 
     // Laster inn hovedinnholdet
-    // $('#innhold').load('/main/html/bestemmelser/1_plankrav.html') - Denne fungerer fint
-    $.get('/main/js/load_main_content.js'); // Denne fungerer ikke
+    Hoved_Innholdet(); // Fungerer ikke når den er i en egen modul?
   };
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */

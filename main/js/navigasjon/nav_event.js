@@ -14,28 +14,34 @@ $(function () {
 
     // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
     let Result = Overskrifter.filter(function () {
-      return $(this).text() === Søk_Etter;
+      
+      if ($(this).text().indexOf(Søk_Etter) !== -1) {
+        return $(this).text; 
+      };
+      //return $(this).text === Søk_Etter;
     });
 
     // Velger destinasjon utifra antall treff, ved flere treff velges den øverste
     if (Result.length === 1) {
       Destinasjon = $(Result).offset().top;
     }
-    else {
+    else if (Result.length >= 1){
       let Første_Overskrift = Result[0];
       Destinasjon = $(Første_Overskrift).offset().top;
     };
 
     // Gjør at den scroller til midten av siden hvis overskriften er lavere enn
     // høyden på vinduet
-    if (Destinasjon < windowHeight) {
+    if (Destinasjon < windowHeight || Destinasjon !== 0 ) {
       Destinasjon -= (windowHeight / 2);
     };
 
     // Scroller til destinasjonen
-    $('html, body').animate({
-      scrollTop: (Destinasjon)
-    }, 1000);
+    if (Destinasjon !== 0) {
+      $('html, body').animate({
+        scrollTop: (Destinasjon)
+      }, 1000);
+    };
 
   });
 
