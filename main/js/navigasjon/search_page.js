@@ -58,7 +58,7 @@ $(function () {
     if (Item != undefined) {
       // Gjør at den scroller til midten av siden hvis overskriften er lavere enn høyden på vinduet
       let Destinasjon = Item.attr('name');
-      if (Destinasjon < windowHeight) {
+      if (Destinasjon < windowHeight || Destinasjon !== 0 ) {
         Destinasjon -= (windowHeight / 2);
       };
 
@@ -66,6 +66,8 @@ $(function () {
       $('html, body').animate({
         scrollTop: (Destinasjon)
       }, 1000);
+
+      $(Item).effect( "highlight", {color:"#669966"}, 3000 );
 
     }
   });

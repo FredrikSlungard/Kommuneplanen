@@ -10,6 +10,7 @@ $(function () {
 
     let Søk_Etter = $(this).text();
     let Destinasjon = 0;
+    let Sel_Header = $();
     const windowHeight = $(window).height();
 
     // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
@@ -18,16 +19,16 @@ $(function () {
       if ($(this).text().indexOf(Søk_Etter) !== -1) {
         return $(this).text; 
       };
-      //return $(this).text === Søk_Etter;
     });
 
     // Velger destinasjon utifra antall treff, ved flere treff velges den øverste
     if (Result.length === 1) {
+      Sel_Header = Result;
       Destinasjon = $(Result).offset().top;
     }
     else if (Result.length >= 1){
-      let Første_Overskrift = Result[0];
-      Destinasjon = $(Første_Overskrift).offset().top;
+      Sel_Header = Result[0];
+      Destinasjon = $(Sel_Header).offset().top;
     };
 
     // Gjør at den scroller til midten av siden hvis overskriften er lavere enn
@@ -36,16 +37,18 @@ $(function () {
       Destinasjon -= (windowHeight / 2);
     };
 
-    // Scroller til destinasjonen
+    // Scroller til destinasjonen og viser highlight i 1 sekund
     if (Destinasjon !== 0) {
       $('html, body').animate({
         scrollTop: (Destinasjon)
       }, 1000);
+
+      $(Sel_Header).effect( "highlight", {color:"#669966"}, 3000 );
     };
 
   });
 
-  // Viser søkeresultatene som matcher
+  // Viser søkeresultatene som matcher (i menyen til høyre)
   $('#søk_nav').on('keyup', function () {
 
     let Search_Prase = $(this).val();

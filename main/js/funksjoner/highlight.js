@@ -42,6 +42,7 @@ jQuery.fn.highlight = function(pat) {
   }) : this;
  };
  
+ // Fjerner highlight
  jQuery.fn.removeHighlight = function() {
   return this.find("span.highlight").each(function() {
    this.parentNode.firstChild.nodeName;

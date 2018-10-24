@@ -4,3 +4,17 @@
   padding-right: 10px;
   padding-top: 100px;
 }
+
+/* Fremhever teksten som velges ved søk eller valg fra navigasjonen */
+@keyframes highlight {
+  0% {
+    background: #BA9EB0;
+  }
+  100% {
+    background: none;
+  }
+}
+
+.fremhev {
+  animation: highlight 5s;
+}
