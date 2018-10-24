@@ -50,9 +50,9 @@ Fjerner kulepunkter i lister <ul>*/
 .navmenu {
   background-color: #111;
   color: #D3D3D3;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .navmenu ul {
@@ -66,7 +66,10 @@ Fjerner kulepunkter i lister <ul>*/
 
 .navmenu a:hover {
   color: #f1f1f1;
-  font-size: 120%;
+}
+
+.navmenu li:hover {
+  font-size: 105%;
 }
 
 #søke_treff a:hover {
@@ -75,12 +78,16 @@ Fjerner kulepunkter i lister <ul>*/
   cursor: pointer; 
 }
 
-
 /* Overskriftene i søketreffet vises som vanlig tekst med fet skrift */
 #søke_treff h1, #søke_treff h2, #søke_treff h3, #søke_treff h4, #søke_treff h5, #søke_treff h6 {
   font-size: 15px;
   font-weight: bold;
 }
+
+#søke_treff ul {
+  padding-left: 0;
+}
+
 
 /* Styling på ordene som markeres */
 .highlight { 

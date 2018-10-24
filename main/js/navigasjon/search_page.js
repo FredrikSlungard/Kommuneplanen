@@ -23,8 +23,9 @@ $(function () {
     return $.map(Treff, function(value, i) {
       let Top_Pos = $(value).offset().top;
 
-      New_Phrase = '<ul><a name=' + Top_Pos + '>' + $(value).text() + '</a></ul>';
-      return New_Phrase
+      New_Phrase = '<li><a name=' + Top_Pos + '>' + $(value).text() + '</a></li>';
+
+      return '<ul>' + New_Phrase + '</ul>'
 
     });
   };
@@ -35,7 +36,6 @@ $(function () {
 
     if (Search_Prase.length >= 3) {
       let Funnet_Ord = Treff_I_Dokument(Search_Prase);
-
       // Limer inn søkeresultatet hvis det er treff
       Dest_Treff.empty()
       .append(Funnet_Ord)
