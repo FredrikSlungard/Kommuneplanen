@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+  <!--Meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  <!--Cusom CSS skal alltid være etter bootstrap-->
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <!--Javascript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+  <!--Latest compiled javascript-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Overskriften før enheten</h2>
+        <p>Dette er bare et eksempel for å se hvordan jumbotron virker</p>
+        <p>Må prøve å få til at den passer med teksten og om hovedbruksenhet oppdages</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="kpl_sekundær_boenhet" class="col-md-6">
+        <h2>Sekundær boenhet</h2>
+        <p>Det tillates sekundær boenhet kun i tilknytning til
+          enebolig, med mindre annet er bestemt i den enkelte plan. Maksimal størrelse på sekundær boenhet er 80 m² BRA
+          per fradelt tomt. Areal til
+          utvendige boder for sekundær boenhet medregnes i maksimal størrelse. Overbygget parkering for sekundær
+          boenhet inngår ikke i maksimal størrelse på 80 m2 BRA
+        </p>
+      </div>
+
+      <script>
+        $("#kpl_sekundær_boenhet").load("../veiledning/sekundær_enhet.html");
+      </script>
+    </div>
+  </div>
+
+  <script src="../../js/søk/load_page.js"></script>
+  <script src="../../js/søk/finn_ord.js"></script>
+
+</body>
+
+</html>
