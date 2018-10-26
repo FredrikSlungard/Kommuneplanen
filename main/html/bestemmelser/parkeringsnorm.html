@@ -1,23 +1,3 @@
-<style>
-  table,
-  th,
-  th {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-
-  tr, td {
-    border: 1px solid black;
-  }
-
-  th,
-  th,
-  td {
-    padding: 5px;
-    text-align: left;
-  }
-</style>
-
 <h1>Parkeringsnorm</h1>
 <p>Parkeringsnormen i kommuneplanen skal legges til grunn for alt planarbeid.
   Kommuneplanens parkeringsnorm gjelder der vedtatte arealplaner henviser til parkeringsnorm, samt der ikke annet er
@@ -44,31 +24,37 @@
 
   <!--Innhold-->
   <tbody>
-    <tr>
+    <div class="rad_parkeringsnorm">
+      <tr>
+    </div>
 
-      <!--Frittliggende småhusbebyggelse-->
-      <td rowspan="2">
-        <p>Frittliggende småhusbebyggelse<br>
-          Ene-/Tomannsboliger)</p>
-        <p>Parkering på egen tomt.</p>
-      </td>
+    <!--Frittliggende småhusbebyggelse-->
+    <div class="rad_parkeringsnorm">
+      <tr>
+        <td rowspan="2">
+          <p>Frittliggende småhusbebyggelse<br>
+            Ene-/Tomannsboliger)</p>
+          <p>Parkering på egen tomt.</p>
+        </td>
 
-      <td>Hovedbruksenhet</td>
-      <td>2</td>
-      <td></td>
-      <td rowspan="2">
-        <p>Min. 2 plasser pr. hovedbruksenhet skal være garasjeplasser.</p>
-        <p>Sekundærleilighet (i enebolig) med BRA mindre enn 80 m².</p>
-      </td>
-    </tr>
+        <td>Hovedbruksenhet</td>
+        <td>2</td>
+        <td></td>
+        <td rowspan="2">
+          <p>Min. 2 plasser pr. hovedbruksenhet skal være garasjeplasser.</p>
+          <p>Sekundærleilighet (i enebolig) med BRA mindre enn 80 m².</p>
+        </td>
+      </tr>
 
     <tr>
       <td>Sekundærenhet</td>
       <td>1</td>
       <td></td>
     </tr>
+    </div>
 
     <!--Konsentert småhusbebyggelse-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td rowspan="2">
         <p>Konsentert småhusbebyggelse<br>
@@ -91,8 +77,10 @@
       <td>1-2-roms leilighet</td>
       <td>2 (hvorav 1 gjesteplass)</td>
     </tr>
+    </div>
 
     <!--Blokker og kons. småhus-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td rowspan="2">
         <p>Blokke og konsentert småhusbebyggelse
@@ -122,7 +110,10 @@
       <td>1,2 (hvorav 0,2 gjesteplass)</td>
       <td>1,5 (hvorav 0,2 gjesteplass)</td>
     </tr>
+    </div>
 
+    <!--Kollektivnære områder med blokker-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td rowspan="2">
         <p>Kollektivnære områder med blokker og konsentrert småhusbebyggelse<br>
@@ -135,9 +126,10 @@
       <td>1,2 (hvorav 0,2 gjesteplass)</td>
       <td>2,2 (hvorav 0,2 gjesteplass)</td>
       <td rowspan="2">
-        <p>Min. 1 plass pr. leilighet skal være garasjeplass som tinglyses på den enkelte leilighet (3-roms og større). De øvrige
-        parkeringsplassene, herunder gjesteplasser og plasser reservert for forflytningshemmede, skal etableres som
-        fellesareal.</p>
+        <p>Min. 1 plass pr. leilighet skal være garasjeplass som tinglyses på den enkelte leilighet (3-roms og større).
+          De øvrige
+          parkeringsplassene, herunder gjesteplasser og plasser reservert for forflytningshemmede, skal etableres som
+          fellesareal.</p>
 
         <p>Min. 5 % av de øvrige plassene skal reserveres forflytningshemmede.</p>
 
@@ -152,7 +144,10 @@
       <td>1,2 (hvorav 0,2 gjesteplass)</td>
       <td>1,5 (hvorav 0,2 gjesteplass)</td>
     </tr>
+    </div>
 
+    <!--Sentrumsområder-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td>
         <p>Sentrumsområder<br>
@@ -163,12 +158,14 @@
       <td></td>
       <td>1</td>
       <td>
-        <p>Gjelder alle arealformål innenfor definerte sentrumsområder (stiplet, brun linje på kommuneplankartet), med unntak av
-        bolig og kontor.</p>
+        <p>Gjelder alle arealformål innenfor definerte sentrumsområder (stiplet, brun linje på kommuneplankartet), med
+          unntak av
+          bolig og kontor.</p>
 
         <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
 
-        <p>1 sykkelplass pr 100 m². Det skal avsettes plass til parkering for sykkel og moped foran alle hovedinnganger.</p>
+        <p>1 sykkelplass pr 100 m². Det skal avsettes plass til parkering for sykkel og moped foran alle
+          hovedinnganger.</p>
       </td>
     </tr>
 
@@ -182,11 +179,14 @@
         <p>Sykkelparkering for minst 30 % av de ansatte.</p>
       </td>
     </tr>
+    </div>
 
+    <!--Forretning - Plasskrevende-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td>
-      <p>Forretning for plasskrevende varer<br>
-      (Jf. fylkesdelplan for handelsvirksomhet, service og senterstruktur i Akershus fra 2001)</p>
+        <p>Forretning for plasskrevende varer<br>
+          (Jf. fylkesdelplan for handelsvirksomhet, service og senterstruktur i Akershus fra 2001)</p>
       </td>
 
       <td>100 m² BRA</td>
@@ -214,11 +214,14 @@
         <p>1 sykkelplass pr 50 m² forretningsareal.</p>
       </td>
     </tr>
+    </div>
 
+    <!--Industri og lager-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td>
         <p>Industri/Lager<br>
-        Andre områder</p>
+          Andre områder</p>
       </td>
 
       <td>100 m² BRA</td>
@@ -236,7 +239,7 @@
     <tr>
       <td>
         <p>Institusjoner<br>
-        (sykehjem, omsorgsboliger, bo- og service o.l.)</p>
+          (sykehjem, omsorgsboliger, bo- og service o.l.)</p>
       </td>
 
       <td>Senger + ansatte</td>
@@ -244,7 +247,7 @@
       <td></td>
       <td>
         <p>For ansatte vurderes parkeringsbehov i forhold til kollektivnærhet</p>
-        
+
         <p>Parkeringsbehov for besøkende skal vurderes i hvert enkelt tilfelle.</p>
 
         <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
@@ -252,7 +255,10 @@
         <p>Sykkelparkering for minst 30 % av de ansatte.</p>
       </td>
     </tr>
+    </div>
 
+    <!--Videregående-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td rowspan="2">Videregående skole</td>
       <td>Ansatte (årsverk)</td>
@@ -263,8 +269,9 @@
 
         <p>Sambruksparkering skal tilstrebes.</p>
 
-        <p>P-norm skal vurderes i forhold til trafikksikkerhet og tilgjengelig anlegg for myke trafikanter. Ved reduksjon av norm
-        kan gs-anlegg kreves opparbeidet i som en del av skole-anlegget.</p>
+        <p>P-norm skal vurderes i forhold til trafikksikkerhet og tilgjengelig anlegg for myke trafikanter. Ved
+          reduksjon av norm
+          kan gs-anlegg kreves opparbeidet i som en del av skole-anlegget.</p>
 
         <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
 
@@ -279,7 +286,10 @@
       <td></td>
       <td>0,3*</td>
     </tr>
+    </div>
 
+    <!--Barne og ungdomsskole-->
+    <div class="rad_parkeringsnorm">
     <tr>
       <td>Barne- og ungdomsskole</td>
       <td>Ansatte (årsverk)</td>
@@ -287,18 +297,144 @@
       <td>0,6</td>
       <td>
         <p>For ansatte vurderes parkeringsbehov i forhold til kollektivnærhet.</p>
-        
+
         <p>Sambruksparkering skal tilstrebes.</p>
-        
-        <p>P-norm skal vurderes i forhold til trafikksikkerhet og tilgjengelig anlegg for myke trafikanter. Ved reduksjon av
+
+        <p>P-norm skal vurderes i forhold til trafikksikkerhet og tilgjengelig anlegg for myke trafikanter. Ved
+          reduksjon av
           norm
           kan gs-anlegg kreves opparbeidet i som en del av skole-anlegget.</p>
-        
+
         <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
-        
+
         <p>Det skal etableres sykkelparkering for minst 50 % av ansatte og elever som tillates å sykle til skolen.</p>
       </td>
     </tr>
+    </div>
+
+    <!--Barnehage og parker-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Barnehager/-parker</td>
+      <td>Barn</td>
+      <td></td>
+      <td>0,3</td>
+      <td>
+        <p>For ansatte vurderes parkeringsbehov i forhold til kollektivnærhet.</p>
+
+        <p>Sambruksparkering skal tilstrebes.</p>
+
+        <p>P-norm skal vurderes i forhold til trafikksikkerhet og tilgjengelig anlegg for myke trafikanter. Ved
+          reduksjon av
+          norm
+          kan gs-anlegg kreves opparbeidet i som en del av skole-anlegget.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av ansatte og barn. Det skal tilrettelegges for parkering av sykkeltraller
+          under tak.</p>
+      </td>
+    </tr>
+    </div>
+
+    <!--Idrettsanlegg-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Idrettsanlegg</td>
+      <td>Tilskuere, seter, samtidige brukere</td>
+      <td>0,3</td>
+      <td></td>
+      <td>
+        <p>Parkeringsbehov skal vurderes i forhold til kollektivnærhet.</p>
+
+        <p>Sambruksparkering skal tilstrebes.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av antall tilskuere/ansatte/ antall samtidige brukere.</p>
+      </td>
+
+    </tr>
+    </div>
+
+    <!--Småbåthavner-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Småbåthavner</td>
+      <td>Båtplasser,
+        inkl. bøyeplasser.</td>
+      <td>0,3</td>
+      <td></td>
+      <td>
+        <p>Anleggets reelle parkeringsbehov skal vurderes i hvert enkelt tilfelle.</p>
+
+        <p>Sambruksparkering skal tilstrebes.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av antall båtplasser.</p>
+      </td>
+    </tr>
+    </div>
+
+    <!--Hotell-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Hotell</td>
+      <td>Gjesterom</td>
+      <td>0,8</td>
+      <td></td>
+      <td>
+        <p>Parkeringsbehov skal vurderes i forhold til kollektivnærhet.</p>
+
+        <p>Parkering for ansatte er inkludert i tallene.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av de ansatte.</p>
+      </td>
+    </tr>
+    </div>
+
+    <!--Bevertning utenfor sentrum-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Bevertningssteder utenfor sentrumsområder</td>
+      <td>Sitteplasser</td>
+      <td>0,3</td>
+      <td></td>
+      <td>
+        <p>Parkeringsbehov skal vurderes i forhold til kollektivnærhet.</p>
+
+        <p>Parkering for ansatte er inkludert i tallene.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av de ansatte + gjester.</p>
+      </td>
+    </tr>
+    </div>
+
+    <!--Forsamlingslokale, kirke-->
+    <div class="rad_parkeringsnorm">
+    <tr>
+      <td>Forsamlingslokale, Kirke</td>
+      <td>Sitteplasser</td>
+      <td>0,2</td>
+      <td></td>
+      <td>
+        <p>Parkeringsbehov skal vurderes i forhold til kollektivnærhet.</p>
+
+        <p>Sambruksparkering skal tilstrebes.</p>
+
+        <p>Parkering for ansatte er inkludert i tallene.</p>
+
+        <p>Min. 5 % av plassene skal reserveres forflytningshemmede.</p>
+
+        <p>Sykkelparkering for minst 30 % av tantall sitteplasser.</p>
+      </td>
+    </tr>
+    </div>
 
   </tbody>
 </table>

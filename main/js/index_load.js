@@ -15,7 +15,14 @@ $(function () {
       '7_vassdrag naturmiljø',
       '8_strandsone og brygge',
       '12_transport_parkering',
-      '13_samfunnssikkerhet'
+      '13_samfunnssikkerhet',
+      '15_støy_luftforurensing',
+      '16_estetikk_utforming',
+      '19_boligområder_generelt',
+      '20_nåværende_boligområder',
+      '22_lnf',
+      '23_vern_sjø_vassdrag_standsone',
+      'parkeringsnorm'
     ];
 
     // Gå gjennom alle filene som skal lastes inn
