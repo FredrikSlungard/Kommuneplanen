@@ -1,0 +1,88 @@
+/* Veiledning CSS: 
+.Navnmenu = Påvirker alle items i navmenu
+.Navnmenu a = a tag i Navnmenu 
+.navmenu a:hover = påvirker det som skjer når hover over a tag
+*/
+
+/* Sikrer at innholdet i main (body) alltid er 300px (altså ikke under navigasjonen) Navigasjonen skjules hvis skjermstørrelsen er mindre enn 992 px*/
+@media (min-width: 992px) {
+  body {
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+}
+
+/* Søkebokser med input type text*/
+input[type=search] {
+  width: 150px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px 0px 12px 12px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=search]:focus {
+  width: 100%;
+}
+
+/* Navbar på toppen øverst */
+.navbar {
+  position: fixed;
+  width: 100%;
+  
+  background-color: #222930;
+  color: white;
+  
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #111;
+}
+
+/* Styling på navigasjonen  til venstre og høyre
+Setter padding til venstre og på top
+Hinder understreking i lenker <a>
+Fjerner kulepunkter i lister <ul>*/
+.navmenu {
+  background-color: #111;
+  color: #D3D3D3;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navmenu ul {
+  list-style-type: none;
+}
+
+.navmenu a {
+  text-decoration: none;
+  color: #D3D3D3;
+}
+
+.navmenu a:hover {
+  color: #f1f1f1;
+  font-size: 120%;
+}
+
+#søke_treff a:hover {
+  color: #f1f1f1;
+  font-size: 105%;
+  cursor: pointer; 
+}
+
+
+/* Overskriftene i søketreffet vises som vanlig tekst med fet skrift */
+#søke_treff h1, #søke_treff h2, #søke_treff h3, #søke_treff h4, #søke_treff h5, #søke_treff h6 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Styling på ordene som markeres */
+.highlight { 
+  background-color: #107896 
+}

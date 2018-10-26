@@ -1,0 +1,33 @@
+<!--Gammel sidenav - settes øverst i main-->
+<span id="åpne_nav" class="navigasjon" style="font-size:30px;cursor:pointer">&#9776;Meny</span>
+
+<!--Lukke knappen til navigasjonen-->
+<a href="javascript:void(0)" class="closebtn navigasjon">&times;</a>
+
+  <!--Eventer for sidenavigasjon, legges til nederst-->
+  <script>
+    $.getScript("/js/eventer/side_nav.js")
+  </script>
+
+<!--CSS for lukkeknappen-->
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 3em;
+  margin-left: 50px;
+}
+
+<!--Opprinnelig CSS for navigasjonen-->
+.sidenav {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  font-size: 0.8em;
+}

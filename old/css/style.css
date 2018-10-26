@@ -51,9 +51,9 @@
 }
 
 /* Hyperlenker */
-a:link    { color: #c00 }  /* unvisited links */
+a:link    { color: #2200CC }  /* unvisited links */
 a:visited { color: #2200CC}  /* visited links   */
-a:hover   { color: #00c }  /* user hovers     */
+a:hover   { color: #c00 }  /* user hovers     */
 a:active  { color: #ccc }  /* active links    */
 
 /* Popover style */
@@ -63,4 +63,16 @@ a:active  { color: #ccc }  /* active links    */
 }
 .popover-body {
     background-color:#CCCCCC;
+}
+
+
+/* Side navigation style */
+.navmenu a {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+}
+
+.navmenu a:hover {
+  color: #f1f1f1;
 }
