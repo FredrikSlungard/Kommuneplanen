@@ -2,7 +2,7 @@
 $(function() {
   'user strict';
 
-  let Fldr = '/main/html/bestemmelser/';
+  let Fldr = 'main/html/bestemmelser/';
   let Filer = [
     '1_plankrav',
     '2_rekkefølgekrav',
