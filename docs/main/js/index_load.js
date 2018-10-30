@@ -46,7 +46,6 @@ $(function () {
     'use strict'
     let Nav_Fldr = 'main/html/navbar/';
 
-    console.log("hei")
     // Laster inn innholdet som skal være i navigasjonbarene.
     // Toppen, til høyre og venstre.
     $('#top_navbar').load(Nav_Fldr + 'top_navbar.html');
