@@ -5,7 +5,7 @@ $(function () {
   Hoved_Innholdet = () => {
     'user strict';
 
-    let Fldr = '/main/html/bestemmelser/';
+    let Fldr = 'main/html/bestemmelser/';
     let Filer = [
       '1_plankrav',
       '2_rekkefølgekrav',
@@ -44,7 +44,7 @@ $(function () {
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
     'use strict'
-    let Nav_Fldr = '/main/html/navbar/';
+    let Nav_Fldr = 'main/html/navbar/';
 
     // Laster inn innholdet som skal være i navigasjonbarene.
     // Toppen, til høyre og venstre.
@@ -58,12 +58,12 @@ $(function () {
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */
   Javascript_Funksjonalitet = () => {
-    let Nav_Fldr = '/main/js/navigasjon/';
+    let Nav_Fldr = 'main/js/navigasjon/';
     
     // Egne pseudo-funksjoner og add-in for highlight
-    $.get('/main/js/funksjoner/pseudo_exp.js');
-    $.get('/main/js/funksjoner/highlight.js')
-    $.get('/main/js/funksjoner/finn_ord.js')
+    $.get('main/js/funksjoner/pseudo_exp.js');
+    $.get('main/js/funksjoner/highlight.js')
+    $.get('main/js/funksjoner/finn_ord.js')
 
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
