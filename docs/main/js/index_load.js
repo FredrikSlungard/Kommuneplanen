@@ -40,6 +40,59 @@ $(function () {
   };
 
 
+  Last_Inn_Vedlegg = () => {
+    'use strict';
+
+    let Fldr_1 = 'main/html/veiledning/vedlegg_1/';
+    let Vedlegg_1 = [
+      'krav_regulering',
+      'vektsområder',
+      'kulturminne_kulturmiljø',
+      'landskap_vann',
+      'transport_parkering',
+      'handel_næring',
+      'infra_miljø_sikkerhet',
+      'estetikk_utforming',
+      'boligområder_generelt',
+      'nåværende_boligområder',
+      'arealformål',
+      'lnf'
+    ];
+
+    let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
+    let Vedlegg_3 = [
+      'utdypende_forklaringer',
+      'definisjoner'
+    ];
+
+    // Gå gjennom alle filene som skal lastes inn
+    let Path = '';
+
+    // Innholdet i vedlegg 1
+    $.each(Vedlegg_1, function (index, value) {
+      Path = Fldr_1 + value + '.html';
+
+      $.get(Path, function (data) {
+
+        $(data).appendTo('#innhold')
+
+      });
+    });
+
+    // Innholdet i vedlegg 3
+    $.each(Vedlegg_3, function (index, value) {
+      Path = Fldr_3 + value + '.html';
+
+      $.get(Path, function (data) {
+
+        $(data).appendTo('#innhold')
+
+      });
+    });
+    
+
+  };
+
 
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
@@ -52,8 +105,9 @@ $(function () {
     $('#left_navbar').load(Nav_Fldr + 'left_nav.html');
     $('#right_navbar').load(Nav_Fldr + 'right_nav.html');
 
-    // Laster inn hovedinnholdet
-    Hoved_Innholdet(); // Fungerer ikke når den er i en egen modul?
+    // Laster inn hovedinnholdet og vedleggene
+    Hoved_Innholdet();
+    Last_Inn_Vedlegg();
   };
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */
