@@ -1,5 +1,4 @@
 /*
-
 highlight v5
 
 Highlights arbitrary terms.

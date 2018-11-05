@@ -1,7 +1,7 @@
 // Script som kjører når siden lastes inn
 $(function () {
 
-  // Innholdet i hoveddelen
+  // Filbanene til innholdet i hoveddelen
   Hoved_Innholdet = () => {
     'user strict';
 
@@ -25,22 +25,14 @@ $(function () {
       'parkeringsnorm'
     ];
 
-    // Gå gjennom alle filene som skal lastes inn
-    let Path = '';
+    return $.map(Filer, function (value, index) {
+      return Fldr + value + '.html';
+    })
 
-    $.each(Filer, function (index, value) {
-      Path = Fldr + value + '.html';
-
-      $.get(Path, function (data) {
-
-        $(data).appendTo('#innhold')
-
-      });
-    });
   };
 
-
-  Last_Inn_Vedlegg = () => {
+  // Filbanene til vedleggene
+  Vedlegg_1 = () => {
     'use strict';
 
     let Fldr_1 = 'main/html/veiledning/vedlegg_1/';
@@ -59,37 +51,23 @@ $(function () {
       'lnf'
     ];
 
+    return $.map(Vedlegg_1, function (value, index) {
+      return Fldr_1 + value + '.html';
+    })
+  };
+
+  Vedlegg_3 = () => {
+    'use strict';
+
     let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
     let Vedlegg_3 = [
       'utdypende_forklaringer',
       'definisjoner'
     ];
 
-    // Gå gjennom alle filene som skal lastes inn
-    let Path = '';
-
-    // Innholdet i vedlegg 1
-    $.each(Vedlegg_1, function (index, value) {
-      Path = Fldr_1 + value + '.html';
-
-      $.get(Path, function (data) {
-
-        $(data).appendTo('#innhold')
-
-      });
-    });
-
-    // Innholdet i vedlegg 3
-    $.each(Vedlegg_3, function (index, value) {
-      Path = Fldr_3 + value + '.html';
-
-      $.get(Path, function (data) {
-
-        $(data).appendTo('#innhold')
-
-      });
-    });
-    
+    return $.map(Vedlegg_3, function (value, index) {
+      return Fldr_3 + value + '.html';
+    })
 
   };
 
@@ -97,23 +75,32 @@ $(function () {
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
     'use strict'
+
     let Nav_Fldr = 'main/html/navbar/';
+    //let Last_Inn_Filer = [];
 
     // Laster inn innholdet som skal være i navigasjonbarene.
-    // Toppen, til høyre og venstre.
+    // Toppen og venstre.
     $('#top_navbar').load(Nav_Fldr + 'top_navbar.html');
     $('#left_navbar').load(Nav_Fldr + 'left_nav.html');
-    $('#right_navbar').load(Nav_Fldr + 'right_nav.html');
 
     // Laster inn hovedinnholdet og vedleggene
-    Hoved_Innholdet();
-    Last_Inn_Vedlegg();
+    let Last_Inn_Filer = Hoved_Innholdet().concat(Vedlegg_1(), Vedlegg_3());
+    $.each(Last_Inn_Filer, function (index, value) {
+      $.get(value, function (data) {
+      })
+
+        .done(function (data) {
+          $(data).appendTo('#innhold')
+        });
+    });
+
   };
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */
   Javascript_Funksjonalitet = () => {
     let Nav_Fldr = 'main/js/navigasjon/';
-    
+
     // Egne pseudo-funksjoner og add-in for highlight
     $.get('main/js/funksjoner/pseudo_exp.js');
     $.get('main/js/funksjoner/highlight.js')
@@ -123,7 +110,7 @@ $(function () {
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
 
-    // Søkefeltet til høyre
+    // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');
   };
 

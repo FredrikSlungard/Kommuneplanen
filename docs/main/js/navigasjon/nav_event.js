@@ -2,57 +2,51 @@
 // Går til overskriften i dokumentet når noen tykker på overskriften i navigasjonen
 // Hvis det er flere treff går den til den første overskriften
 $(function () {
-  'use strict'
 
-  $('.nav_clickable').on('click', function () {
+  // Returnerer destinasjonen det skal scrolles til
+  Finn_Destinasjon = (Resultat, Klikket_Item) => {
+    'use strict';
 
     let Destinasjon = 0;
     const windowHeight = $(window).height();
 
-    // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
-    let Result = Returner_Første_Treff($(this).text(), $('h1,h2'))
-    
-    if (Result != undefined) {
-      Destinasjon = $(Result).offset().top
+    // Hent ut destinasjonen hvis resultatet ikke er tomt, hvis ikke bruk navnet
+    // Får ikke highligtet med denne
+    if (Resultat == undefined) {
+      Destinasjon = $(Klikket_Item).attr('name');
     }
+    else {
+      Destinasjon = $(Resultat).offset().top;
+    };
 
-    // Gjør at den scroller til midten av siden hvis overskriften er lavere enn
-    // høyden på vinduet
-    if (Destinasjon < windowHeight || Destinasjon !== 0 ) {
+    // Trekker ifra vindushøyden hvis overskriften er lavere enn
+    // høyden på vinduet (overskriften lander midt på vinduet)
+    if (Destinasjon < windowHeight || Destinasjon !== 0) {
       Destinasjon -= (windowHeight / 2);
     };
 
-    // Scroller til destinasjonen og viser highlight i 1 sekund
+    return Destinasjon
+
+  };
+
+  $('.nav_clickable').on('click', function () {
+    'use strict';
+
+    let Destinasjon = 0;
+
+    // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
+    let Type_Overskrift = $(this).parent().prop('nodeName');
+    let Result = Returner_Første_Treff($(this), $('#innhold > ' + Type_Overskrift))
+
+    Destinasjon = Finn_Destinasjon(Result, this);
+
+    // Scroller til destinasjonen og viser highlight
     if (Destinasjon !== 0) {
       $('html, body').animate({
         scrollTop: (Destinasjon)
       }, 1000);
 
-      $(Result).effect( "highlight", {color:"#669966"}, 3000 );
-    };
-
-  });
-
-  // Viser søkeresultatene som matcher (i menyen til høyre)
-  $('#søk_nav').on('keyup', function () {
-
-    let Search_Prase = $(this).val();
-
-    // Vis alt hvis søkelengden er null
-    if (Search_Prase.length === 0) {
-      $('li').show();
-      $('.nav_clickable').show();
-    }
-
-    // Let gjennom listen og klassen clickable (h1 overskriftene)
-    else {
-
-      $('li:not(:def_contains("' + Search_Prase + '")), .nav_clickable:not(:def_contains("' + Search_Prase + '"))')
-        .hide();
-
-      // Viser resultatene som matcher (oppdaterer søket etterhver)
-      $('li:def_contains("' + Search_Prase + '"), .nav_clickable:def_contains("' + Search_Prase + '")')
-        .show();
+      $(Result).effect( "highlight", {color:"#86ac41"}, 3000 );
     };
 
   });

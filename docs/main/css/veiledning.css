@@ -1,0 +1,58 @@
+/* Sytlingen til nedtrekkslistene som viser innholdet */
+/* Collapsible - Denne brukes når innholdet er skjult */
+.collapsible {
+  background-color: #7da3a1;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #34675c;
+  color: white;
+}
+
+/* Legger til pluss etter teksten */
+.collapsible:before {
+  content: '\02795'; /* Unicode character for "pluss" sign (+) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Visible - Denne brukes når innholdet er synlig */
+.visible {
+  background-color: #7da3a1;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.active, .visible:hover {
+  background-color: #34675c;
+  color: white;
+}
+
+/* Legger til minus når content er synlig */
+.visible:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+/*Klassen content er teksten i nedtrekkslisten */
+.content {
+  display: none;
+  background-color:#CCCCCC;
+}

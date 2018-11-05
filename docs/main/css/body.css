@@ -1,31 +1,44 @@
 /* Innstillinger for hovedinnholdet (main) */
 main {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 100px;
+  padding: 100px 20px 10px 20px
+
+  /* background-color: #324851;
+  color: white; */
+
 }
 
 /* Innstillinger for tabeller */
+main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 main thead {
   border: 1px solid black;
-  border-collapse: collapse;
-  background-color: #669966;
+  background-color: #34675c;
+  color: #F0F8FF;
 }
 
 main tbody {
   border-collapse: collapse;
   padding: 5px;
   text-align: left;
-    
   border: 1px solid black;
 }
 
-main td, #innhold tr, #innhold th {
+main td, 
+main tr, 
+main th {
   border: 1px solid black;
   padding: 2px;
 }
 
-main tbody tr:hover {
-  background-color: #D3D3D3;
-  font-size: 105%;
+main tbody:hover {
+    background-color: #7da3a1;
 }
+
+/* Hyperlenker */
+main a:link    { color: #2200CC }  /* unvisited links */
+main a:visited { color: #2200CC}  /* visited links   */
+main a:hover   { color: #c00 }  /* user hovers     */
+main a:active  { color: #004445 }  /* active links    */

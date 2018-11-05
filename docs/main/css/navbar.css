@@ -8,7 +8,6 @@
 @media (min-width: 992px) {
   body {
     padding-left: 300px;
-    padding-right: 300px;
   }
 }
 
@@ -34,13 +33,11 @@ input[type=search]:focus {
   position: fixed;
   width: 100%;
   
-  background-color: #222930;
+  background-color: #021c1e;
   color: white;
   
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #111;
+  padding: 20px 0px 10px 20px;
+  border-bottom: 5px solid #34675c;
 }
 
 /* Styling på navigasjonen  til venstre og høyre
@@ -48,48 +45,56 @@ Setter padding til venstre og på top
 Hinder understreking i lenker <a>
 Fjerner kulepunkter i lister <ul>*/
 .navmenu {
-  background-color: #111;
-  color: #D3D3D3;
-  padding-top: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.navmenu ul {
-  list-style-type: none;
+  background-color: #324851;;
+  padding: 20px 10px 10px 10px;
+  color:white;
 }
 
 .navmenu a {
   text-decoration: none;
-  color: #D3D3D3;
+  color: white;
 }
 
 .navmenu a:hover {
-  color: #f1f1f1;
+  color: #DBCA69;
+  cursor: pointer;
 }
 
-.navmenu li:hover {
-  font-size: 105%;
+.navmenu ul {
+  list-style-type: none;
+  padding: 5px 0px 0px 0px;
 }
 
+.navmenu li {
+  padding-left: 15px;
+}
+
+/* Div for søketreffene */
 #søke_treff a:hover {
-  color: #f1f1f1;
-  font-size: 105%;
-  cursor: pointer; 
+  color: #DBCA69;
 }
 
-/* Overskriftene i søketreffet vises som vanlig tekst med fet skrift */
-#søke_treff h1, #søke_treff h2, #søke_treff h3, #søke_treff h4, #søke_treff h5, #søke_treff h6 {
-  font-size: 15px;
-  font-weight: bold;
+/* Skriftstørrelser i listen */
+.navmenu h1 {
+  font-size: 1.1em;
+  font-weight: normal;
 }
 
-#søke_treff ul {
-  padding-left: 0;
+.navmenu h2, .navmenu h3, .navmenu h4, .navmenu h5, .navmenu h6 {
+  font-size: 1em;
+  font-weight: normal;
 }
-
 
 /* Styling på ordene som markeres */
 .highlight { 
-  background-color: #107896 
+  background-color: #021c1e; 
+}
+
+/* Klasse som styrer synligheten for et item */
+.synlig {
+  display: block;
+}
+
+.usynlig {
+  display: none;
 }
