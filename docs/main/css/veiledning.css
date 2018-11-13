@@ -1,9 +1,10 @@
-/* Sytlingen til nedtrekkslistene som viser innholdet */
-/* Collapsible - Denne brukes når innholdet er skjult */
+/* Collapsible viser stylingen når innholdet (content) i listen er skjult */
+/* Visible viser stylingen på knappen når innholdet (content) vises */
 .collapsible {
   background-color: #7da3a1;
   color: black;
   cursor: pointer;
+  
   padding: 18px;
   width: 100%;
   border: none;
@@ -25,7 +26,7 @@
   margin-left: 5px;
 }
 
-/* Visible - Denne brukes når innholdet er synlig */
+/* Visible - Sikrer at det er riktig farge og hover når content er synlig*/
 .visible {
   background-color: #7da3a1;
   color: white;
@@ -37,7 +38,7 @@
   outline: none;
 }
 
-.active, .visible:hover {
+.visible:hover {
   background-color: #34675c;
   color: white;
 }
@@ -54,5 +55,21 @@
 /*Klassen content er teksten i nedtrekkslisten */
 .content {
   display: none;
+  background-color:#e2e9e9;
+  color: black;
+
+  padding-block-end: 10px;
+  padding-block-start: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Popover */
+.popover-header {
+  background-color: #34675c;
+  color: white;
+}
+
+.popover-body {
   background-color:#CCCCCC;
 }

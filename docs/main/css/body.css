@@ -1,9 +1,7 @@
 /* Innstillinger for hovedinnholdet (main) */
 main {
-  padding: 100px 20px 10px 20px
-
-  /* background-color: #324851;
-  color: white; */
+  padding: 100px 20px 10px 20px;
+  background-color: #f4f4f4;
 
 }
 
@@ -34,8 +32,13 @@ main th {
 }
 
 main tbody:hover {
-    background-color: #7da3a1;
+  background-color: #7da3a1;
 }
+
+/* main h1 {
+  background-color: #34675c;
+  color: white;
+} */
 
 /* Hyperlenker */
 main a:link    { color: #2200CC }  /* unvisited links */

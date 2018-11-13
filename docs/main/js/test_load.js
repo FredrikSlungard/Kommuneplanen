@@ -1,106 +1,148 @@
-// Laster inn deler av innholdet til testing (tabeller etc.)
-
 // Script som kjører når siden lastes inn
 $(function () {
 
-  // Innholdet i hoveddelen
-  Hoved_Innholdet = async () => {
+  // Filbanene til innholdet i hoveddelen
+  Hoved_Innholdet = () => {
     'user strict';
 
     let Fldr = 'main/html/bestemmelser/';
     let Filer = [
       '1_plankrav',
+      '2_rekkefølgekrav',
+      '4_forhold_gjeldende_plan',
+      '5_kulturminne_kulturmiljø',
+      '6_grønnstruktur',
+      '7_vassdrag naturmiljø',
+      '8_strandsone og brygge',
+      '12_transport_parkering',
+      '13_samfunnssikkerhet',
+      '15_støy_luftforurensing',
+      '16_estetikk_utforming',
+      '19_boligområder_generelt',
       '20_nåværende_boligområder',
+      '22_lnf',
+      '23_vern_sjø_vassdrag_standsone',
       'parkeringsnorm'
     ];
 
-    // Gå gjennom alle filene som skal lastes inn
-    let Path = '';
+    return $.map(Filer, function (value, index) {
+      return Fldr + value + '.html';
+    })
 
-    $.each(Filer, function (index, value) {
-      Path = Fldr + value + '.html';
-
-      $.get(Path, function (data) {
-      })
-
-        .done(function (data) {
-          $(data).appendTo('#innhold');
-        });
-    });
-
-/*     $.each(Filer, function (index, value) {
-      Path = Fldr + value + '.html';
-
-      $.get(Path, function (data) {
-      })
-
-      .done(function(data) {
-        content = data;
-      });
-
-      $(content).appendTo('#innhold');
-
-    }); */
   };
 
-  Last_Inn_Vedlegg = () => {
+  // Filbanene til vedleggene
+  Vedlegg_1 = () => {
+    'use strict';
+
+    let Fldr_1 = 'main/html/veiledning/vedlegg_1/';
+    let Vedlegg_1 = [
+      'krav_regulering',
+      'vektsområder',
+      'kulturminne_kulturmiljø',
+      'landskap_vann',
+      'transport_parkering',
+      'handel_næring',
+      'infra_miljø_sikkerhet',
+      'estetikk_utforming',
+      'boligområder_generelt',
+      'nåværende_boligområder',
+      'arealformål',
+      'lnf'
+    ];
+
+    return $.map(Vedlegg_1, function (value, index) {
+      return Fldr_1 + value + '.html';
+    })
+  };
+
+  Vedlegg_3 = () => {
     'use strict';
 
     let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
     let Vedlegg_3 = [
+      //'utdypende_forklaringer',
       'definisjoner'
     ];
 
-    // Gå gjennom alle filene som skal lastes inn
-    let Path = '';
-    let Content = $();
+    return $.map(Vedlegg_3, function (value, index) {
+      return Fldr_3 + value + '.html';
+    })
 
-    // Innholdet i vedlegg 3
-    $.each(Vedlegg_3, function (index, value) {
-      Path = Fldr_3 + value + '.html';
-
-      $.get(Path, function (data) {
-
-        $(data).appendTo('#innhold')
-
-      });
-    });
   };
 
 
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
     'use strict'
+
     let Nav_Fldr = 'main/html/navbar/';
+    //let Last_Inn_Filer = [];
 
     // Laster inn innholdet som skal være i navigasjonbarene.
-    // Toppen, til høyre og venstre.
+    // Toppen og venstre.
     $('#top_navbar').load(Nav_Fldr + 'top_navbar.html');
     $('#left_navbar').load(Nav_Fldr + 'left_nav.html');
 
     // Laster inn hovedinnholdet og vedleggene
-    Hoved_Innholdet();
-    Last_Inn_Vedlegg();
+    let Definisjoner = Vedlegg_3();
+    let Veiledning = Vedlegg_1();
+    let Bestemmelser = Hoved_Innholdet();
+
+    // Last inn bestemmelsene
+/*     $.each(Bestemmelser, function (index, value) {
+      $.get(value, function (data) {
+      })
+
+        .done(function (data) {
+          $(data).appendTo('#bestemmelser')
+        });
+    }); */
+
+    // Last inn veiledningen
+/*     $.each(Veiledning, function (index, value) {
+      $.get(value, function (data) {
+      })
+
+        .done(function (data) {
+          $(data).appendTo('#veiledning')
+        });
+    }); */
+
+    // Last inn definisjoner
+    $.each(Definisjoner, function (index, value) {
+      $.get(value, function (data) {
+      })
+
+        .done(function (data) {
+          $(data).appendTo('#definisjoner')
+        });
+    });
+
   };
 
   /* Laster inn javascript filer med eventer som aktiveres når siden lastes for første gang. */
   Javascript_Funksjonalitet = () => {
     let Nav_Fldr = 'main/js/navigasjon/';
+    let Veil_Fldr = 'main/js/veiledning/';
 
-    // Gjør klar egne pseudo-funksjoner og add-in for highlight klar til bruk
+    // Egne pseudo-funksjoner og add-in for highlight
     $.get('main/js/funksjoner/pseudo_exp.js');
-    $.get('main/js/funksjoner/highlight.js');
-    $.get('main/js/funksjoner/finn_ord.js');
+    $.get('main/js/funksjoner/highlight.js')
+    $.get('main/js/funksjoner/finn_ord.js')
 
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
 
     // Eventer for body (veiledning)
-    $.get(Nav_Fldr + 'vis_veiledning.js');
+    $.get(Veil_Fldr + 'vis_veiledning.js');
+    $.get(Veil_Fldr + 'legg_til.js');
+    $.get(Veil_Fldr + 'definisjoner.js');
 
-    // Søkefeltet til høyre
+    // Aktiverer søkefeltet
     $.get(Nav_Fldr + 'search_page.js');
+
   };
 
   Last_Innhold();

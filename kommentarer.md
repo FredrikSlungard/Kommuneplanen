@@ -22,3 +22,9 @@ Lage en backend løsning, den "beste" måten er jo å ha et eget felt i serveren
 der de ulike tekstdelene referer til ord/utrykket som skal hentes inn.
 
 Isåfall må callingen optimaliseres, må snakke med noen andre om akkurat det.
+
+# Søkefunksjon
+Virker ikke som den oppdager overskriftene som er kommet via GET call.
+Usikker på hvorfor, den oppdager alt når det kun er 'main' som refereres.
+
+Finn ut hvorfor.

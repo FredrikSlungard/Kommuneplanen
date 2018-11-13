@@ -14,31 +14,22 @@ Returner_Første_Treff = (Søk_Etter, Søk_Her) => {
     };
   });
 
-  // Velger destinasjon utifra antall treff, ved flere treff velges den øverste
-  if (Result.length === 1) {
-    return Result;
-  }
+  switch (Result.length) {
+    case 0:
+      // Gå ut hvis det ikke er noe treff
+      break
 
-  // Returnerer det første resultatet hvis det er flere treff og navnet ikke viser posisjonen
-  else if (Result.length >= 1) {
-    if (Destinasjon == undefined) {
-      return Result[0];
-    }
+    case 1:
 
-    // Jobbes videre med denne, returnerer aldri riktig indeks?
-    else {
+      return Result;
 
-      // Array med differansene fra overskriftene og destinasjonen
-      let Differanse = $.map(Result, function(value, index) {
-        return Math.abs($(value).offset().top - Destinasjon); 
+    // Den minste verdien i differansen er den nærmeste overskriften
+    default:
+      let Differanse = $.map(Result, function (value, index) {
+        return Math.abs($(value).offset().top - Destinasjon);
       });
-
-      // Den minste verdien i differansen er den nærmeste overskriften
       let Index_Treff = Differanse.indexOf(Math.min(...Differanse));
 
-      console.log(Index_Treff);
       return Result[Index_Treff];
-
-    };
   };
-}
+};

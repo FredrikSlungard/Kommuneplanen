@@ -3,7 +3,7 @@
 // Hvis det er flere treff går den til den første overskriften
 $(function () {
 
-  // Returnerer destinasjonen det skal scrolles til
+  // Returnerer posisjonen det skal scrolles til, Resultatet er udefinert prøver den å finne navnet.
   Finn_Destinasjon = (Resultat, Klikket_Item) => {
     'use strict';
 
@@ -36,8 +36,8 @@ $(function () {
 
     // Søker etter overskriften og filterer ut verdiene som ikke treffer søkeverdien
     let Type_Overskrift = $(this).parent().prop('nodeName');
-    let Result = Returner_Første_Treff($(this), $('#innhold > ' + Type_Overskrift))
 
+    let Result = Returner_Første_Treff($(this), $(Type_Overskrift, 'main'))
     Destinasjon = Finn_Destinasjon(Result, this);
 
     // Scroller til destinasjonen og viser highlight

@@ -5,7 +5,6 @@ $(function () {
   'user strict';
 
   // Konstanter som ikke endres underveis (vil ikke søke i nedtrekkslister)
-  let Doc_Content = $('p, :header, td, li');
   const Dest_Treff = $('#søke_treff');
   const Nav_Overskrifter = $('#nav_innhold');
 
@@ -14,7 +13,7 @@ $(function () {
 
     let New_Phrase = '';
 
-    let Treff = Doc_Content.filter(function (index, value) {
+    let Treff = $('p, :header, td, li', 'main').filter(function (index, value) {
       if ($(value).is(':def_contains(' + Søk_Etter + ')')) {
         return $(value);
       };
@@ -93,10 +92,9 @@ $(function () {
   // Tar brukeren til lokasjonen som har søketeksten
   $('#søke_treff').on('click', function (event) {
     
-    console.log("Hello");
     let windowHeight = $(window).height();
     let Item = $(event.target);
-    let Result = Returner_Første_Treff($(event.target), Doc_Content);
+    let Result = Returner_Første_Treff($(event.target), $('p, :header, td, li', 'main'));
 
     if (Item != undefined) {
       // Gjør at den scroller til midten av siden hvis overskriften er lavere enn høyden på vinduet
@@ -115,12 +113,4 @@ $(function () {
     }
   });
 });
-
-  /*       $('li:not(:def_contains("' + Search_Prase + '")), .nav_clickable:not(:def_contains("' + Search_Prase + '"))')
-        .hide();
-   
-      // Viser resultatene som matcher (oppdaterer søket etterhver)
-      $('li:def_contains("' + Search_Prase + '"), .nav_clickable:def_contains("' + Search_Prase + '")')
-        .show(); */
-
 

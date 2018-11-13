@@ -3,8 +3,8 @@
 h1 Legges til som navmenu-brand 
 h2 legges til som liste under h1
 Fjerner parenteser og nummerering, dette gjør at det er lettere å navigere overskriftene */
-$(function() {
-  
+$(function () {
+
   let destinasjon = $('#nav_innhold');
   let Overskrifter = $('h1, h2');
   let innhold = '';
@@ -13,13 +13,15 @@ $(function() {
 
   destinasjon.empty(); // Fjerner gammelt innhold i div, f.eks. testeverdier etc.
 
-  // Henter ut tekstdelen i Source (streng)
+  // Henter ut tekstdelen i Source, fjerner paragrafene i parantes (streng)
   Endre_Innhold = (Source) => {
     'use strict'
 
-    let First_Pos = Source.match(/[a-zA-Z]/);
+    let First_Pos = Source.match(/[a-zA-Z]/); // Finner første bokstav
     let Last_Pos = Source.length;
+    let temp = '';
 
+    // Første bokstav
     if (First_Pos === null) {
       First_Pos === 0;
     }
@@ -27,10 +29,18 @@ $(function() {
       First_Pos = First_Pos.index;
     };
 
+    // Siste bokstav
     if (Source.indexOf('(') !== -1) {
       Last_Pos = Source.indexOf('(');
     };
 
+    // Sjekker om strengen inneholder vedlegg, og trekker ut posisjonen til tekstbiten
+    if (Source.indexOf('Vedlegg') !== -1) {
+      if (Source.match(':').index + 1 > First_Pos) {
+        First_Pos = Source.match(':').index + 1;
+      };
+    };
+    
     return Source.substring(First_Pos, Last_Pos).trim();
 
   };
