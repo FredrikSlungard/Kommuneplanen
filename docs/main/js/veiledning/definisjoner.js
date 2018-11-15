@@ -32,7 +32,6 @@ $(function () {
 
   // Aktiverer eventer for popover
   Finn_Definisjoner();
-  Finn_Retningslinjer();
   $('[data-toggle="popover"]').popover();
 
   // Forhindrer scrolling når brukeren trykker på popover (href tar brukeren til toppen)

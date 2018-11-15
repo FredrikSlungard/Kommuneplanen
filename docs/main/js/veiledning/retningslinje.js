@@ -10,36 +10,50 @@ $(function () {
 
   // Legger til hyperlenker til veiledningsteksten
   // Search For kan erstattes med overskriftene i definisjonene?
-  Lenke_Til_Veiledning = () => {
+  Lenke_Til_Retningslinje = () => {
     'use strict';
 
-    let Search_In = $('p', '#bestemmelser');
-    let Search_For = ['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'støyfølsomt bruksformål'];
+    let Search_In = $('h2, h3', '#bestemmelser');
+    let Search_For = $('h3, h4', '#retningslinje');
+    let Destinasjon = $();
+    let lcase_Overskrift = '';
+    let lcase_veil = '';
+    
+    //['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'støyfølsomt bruksformål'];
 
-    let Start_HTML = '<a class="intern_lenke" data-toggle="collapse" ';
-    let Slutt_HTML = '</a>';
+    let Start_HTML = '<a class="retningslinje" data-toggle="collapse" ';
+      let Slutt_HTML = '</a>';
 
     // Den nye HTML strengen (ref endres til korrekt syntaks, fjerner mellomrom)
     let Ny_HTML = $(Search_For).map(function (i, ord) {
-      let ref = ' href="#veil' + ord.replace(' ', '_') + '">';
-      return Start_HTML + ref + ord + Slutt_HTML;
+      let ref = ' href="#retningslinje' + $(ord).text().replace(' ', '_') + '">';
+      return Start_HTML + ref + 'Retningsline for bestemmelse' + Slutt_HTML;
     });
 
+    
     // Let etter ordene i hele dokumentet
-    $(Search_For).each(function (i, ord) {
-      let reg_exp = new RegExp('\\b(' + Search_For[i] + ')\\b', 'i');
+    $(Search_In).each(function (i, overskrift) {
+      lcase_Overskrift = $(overskrift).text().toLowerCase();
 
-      $(Search_In).each(function (index, value) {
-        let ord_funnet = reg_exp.test($(value).text());
+      if (Search_For.length === 0) {
+        return
+      };
 
-        if (ord_funnet && $(value).is(':visible')) {
-          $(value).html($(value).html().replace(reg_exp, Ny_HTML[i]));
+      // Hvis overskriften inneholder deler av teksten sett inn lenke til retningslinjen
+      $(Search_For).each( function (i, ord) {
+        lcase_veil = $(ord).text().toLowerCase();
+
+        if (lcase_Overskrift.indexOf(lcase_veil) !== -1) {
+          $($(overskrift)).after(Ny_HTML[i]);
+          Ny_HTML.splice(i, 1);
+          Search_For.splice(i, 1);
+          return
         };
       });
     });
   };
 
-  Lenke_Til_Veiledning();
+  Lenke_Til_Retningslinje();
 
   /* Leter opp innholdet som skal brukes i nedtrekkslisten.
   Leter gjennom overskriftene i definisjonene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
@@ -83,7 +97,7 @@ $(function () {
     /* Gå gjennom alle items som passer til definisjonene.
     Hvis et er første item er en paragraf legges første item som en overskrift av definisjonen. 
     
-    Hvis det er en overskrift legges den til som en collapsible (knappen du trykker på), hvis ikke er det innholdet som skal vises/skjules i listen */
+    Hvis det er en overskrift legges den til som en retningslinje (knappen du trykker på), hvis ikke er det innholdet som skal vises/skjules i listen */
     $(Innhold).each(function (index, value) {
       if (index === 0) {
         if ($(value).prop('nodeName').toLowerCase() === 'p') {
