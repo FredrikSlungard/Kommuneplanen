@@ -49,20 +49,48 @@ $(function () {
   Finn_Innhold_Liste = ($Kilde) => {
     'use strict';
 
-    let Lenke_Tekst = $($Kilde).text().toLowerCase();
-    let Def_Headings = $('h3', '#definisjoner');
+    let Let_Etter = Formater_Overskrift($Kilde);
+    let Retningslinjer = $('h3, h4', '#retningslinjer');
+  
+    
 
     // Finner innholdet som skal brukes i nedtrekkslisten
-    let Overskrift = $(Def_Headings).filter(function (index, value) {
-      if ($(value).text().toLowerCase().indexOf(Lenke_Tekst) !== -1) {
+    let Overskrift = $(Retningslinjer).filter(function (index, value) {
+      if ($(value).text().toLowerCase().indexOf(Let_Etter.toLowerCase()) !== -1) {
         return $(value)
       };
     });
 
+    // Finner ikke noen treff
     let Type_Overskrift = $(Overskrift).prop('nodeName');
     let Innhold = Overskrift.nextUntil(Type_Overskrift);
 
     return Innhold;
+
+  };
+
+
+  // Returnerer tekstbiten som skal finnes i retningslinjene
+  Formater_Overskrift = (Source) => {
+
+    let Finn_Overskrift = $(Source).prev(':header').first().text();
+    let First_Pos = Finn_Overskrift.match(/[a-zA-Z]/); // Finner første bokstav
+    let Last_Pos = Finn_Overskrift.length;
+
+    // Første bokstav
+    if (First_Pos === null) {
+      First_Pos === 0;
+    }
+    else {
+      First_Pos = First_Pos.index;
+    };
+
+    // Siste bokstav
+    if (Finn_Overskrift.indexOf('(') !== -1) {
+      Last_Pos = Finn_Overskrift.indexOf('(');
+    };
+
+    return Finn_Overskrift.substring(First_Pos, Last_Pos).trim();
 
   };
 
@@ -89,21 +117,19 @@ $(function () {
     Hvis det er en overskrift legges den til som en retningslinje (knappen du trykker på), hvis ikke er det innholdet som skal vises/skjules i listen */
     $(Innhold).each(function (index, value) {
       if (index === 0) {
-        if ($(value).prop('nodeName').toLowerCase() === 'p') {
+        if (!$(value).is(':header')) {
+
+          Liste_Innhold += btn_Start + $(value).html() + btn_End;
+
+        }
+        else {
 
           Liste_Innhold += btn_Start + Lenke_Tekst + btn_End;
 
           Liste_Innhold += innhold_Start +
             $(value).html() + innhold_end;
 
-        }
-
-        else if ($(value).is(':header')) {
-
-          Liste_Innhold += btn_Start + $(value).html() + btn_End;
-
         };
-
       }
       // Når det ikke er først element
       else {
@@ -129,11 +155,9 @@ $(function () {
 
     let Ref_ID = $(this).attr('href').replace('#', '');
     let para_end = $(this).parent();
-    let Finn_Overskrift = $(this).prev(':header').first();
 
-    Finn_Overskrift.css('color','red');
-      /* let Innhold = HTML_Streng(this);
-      $(Innhold).insertAfter(para_end); */
+    let Innhold = HTML_Streng(this);
+    $(Innhold).insertAfter(para_end);
 
   });
 });
