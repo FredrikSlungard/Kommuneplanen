@@ -1,6 +1,6 @@
 /* Collapsible viser stylingen når innholdet (content) i listen er skjult */
 /* Visible viser stylingen på knappen når innholdet (content) vises */
-.collapsible {
+.collapsible, .retningslinje {
   background-color: #7da3a1;
   color: black;
   cursor: pointer;
@@ -12,13 +12,13 @@
   outline: none;
 }
 
-.active, .collapsible:hover {
+.active, .collapsible:hover, .retningslinje:hover {
   background-color: #34675c;
   color: white;
 }
 
 /* Legger til pluss etter teksten */
-.collapsible:before {
+.collapsible:before .retningslinje:before {
   content: '\02795'; /* Unicode character for "pluss" sign (+) */
   color: white;
   font-weight: bold;
