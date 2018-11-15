@@ -15,22 +15,12 @@ $(function () {
 
     let Search_In = $('h2, h3', '#bestemmelser');
     let Search_For = $('h3, h4', '#retningslinje');
-    let Destinasjon = $();
     let lcase_Overskrift = '';
     let lcase_veil = '';
-    
-    //['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'støyfølsomt bruksformål'];
 
-    let Start_HTML = '<a class="retningslinje" data-toggle="collapse" ';
-      let Slutt_HTML = '</a>';
+    let Start_HTML = '<a class="retningslinje" data-toggle="collapse" href="#">';
+    let Ny_HTML = Start_HTML + 'Retningsline for bestemmelse' + '</a>';
 
-    // Den nye HTML strengen (ref endres til korrekt syntaks, fjerner mellomrom)
-    let Ny_HTML = $(Search_For).map(function (i, ord) {
-      let ref = ' href="#retningslinje' + $(ord).text().replace(' ', '_') + '">';
-      return Start_HTML + ref + 'Retningsline for bestemmelse' + Slutt_HTML;
-    });
-
-    
     // Let etter ordene i hele dokumentet
     $(Search_In).each(function (i, overskrift) {
       lcase_Overskrift = $(overskrift).text().toLowerCase();
@@ -40,12 +30,11 @@ $(function () {
       };
 
       // Hvis overskriften inneholder deler av teksten sett inn lenke til retningslinjen
-      $(Search_For).each( function (i, ord) {
+      $(Search_For).each(function (i, ord) {
         lcase_veil = $(ord).text().toLowerCase();
 
         if (lcase_Overskrift.indexOf(lcase_veil) !== -1) {
-          $($(overskrift)).after(Ny_HTML[i]);
-          Ny_HTML.splice(i, 1);
+          $($(overskrift)).after(Ny_HTML);
           Search_For.splice(i, 1);
           return
         };
@@ -140,19 +129,11 @@ $(function () {
 
     let Ref_ID = $(this).attr('href').replace('#', '');
     let para_end = $(this).parent();
+    let Finn_Overskrift = $(this).prev(':header').first();
 
-    // Flytt innholdet hvis ID eksisterer fra før
-    if ($('#' + Ref_ID).length !== 0) {
-      $('#' + Ref_ID).insertAfter(para_end);
-    }
-
-    // Leter opp og henter innholdet fra definisjonene og bygger HTML streng
-    else {
-
-      let Innhold = HTML_Streng(this);
-      $(Innhold).insertAfter(para_end);
-
-    };
+    Finn_Overskrift.css('color','red');
+      /* let Innhold = HTML_Streng(this);
+      $(Innhold).insertAfter(para_end); */
 
   });
 });
