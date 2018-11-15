@@ -89,7 +89,7 @@ $(function () {
       })
 
         .done(function (data) {
-          $(data).appendTo('#veiledning')
+          $(data).appendTo('#retningslinje')
         });
     });
 
