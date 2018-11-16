@@ -13,5 +13,10 @@ $(document).on('click', 'button', function () {
     $(this).toggleClass("collapsible visible");
     Innhold.slideToggle('fast');
     
+  }
+  else if ($(this).hasClass('collapsible_sub') || $(this).hasClass('visible_sub')) {
+    let Innhold = $(this).next('.content');
+    $(this).toggleClass("collapsible_sub visible");
+    Innhold.slideToggle('fast');
   };
 });
