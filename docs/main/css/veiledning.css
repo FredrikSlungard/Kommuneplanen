@@ -1,7 +1,6 @@
 /* Collapsible viser stylingen når innholdet (content) i listen er skjult */
 /* Visible viser stylingen på knappen når innholdet (content) vises */
-.collapsible,
-.collapsible_sub {
+.collapsible {
   background-color: #7da3a1;
   color: black;
   cursor: pointer;
@@ -15,14 +14,13 @@
 
 .active, 
 .collapsible:hover, 
-.collapsible_sub:hover {
+{
   background-color: #34675c;
   color: white;
 }
 
 /* Legger til pluss etter teksten */
-.collapsible:before, 
-.collapsible_sub:before {
+.collapsible:before {
   content: '\02795'; /* Unicode character for "pluss" sign (+) */
   color: white;
   font-weight: bold;
@@ -31,8 +29,7 @@
 }
 
 /* Visible - Sikrer at det er riktig farge og hover når content er synlig*/
-.visible, 
-.visible_sub {
+.visible {
   background-color: #7da3a1;
   color: white;
   cursor: pointer;
@@ -43,15 +40,13 @@
   outline: none;
 }
 
-.visible:hover,
-.visible_sub:hover {
+.visible:hover {
   background-color: #34675c;
   color: white;
 }
 
 /* Legger til minus når content er synlig */
-.visible:after,
-.visible_sub:after {
+.visible:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
   color: white;
   font-weight: bold;

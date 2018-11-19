@@ -56,21 +56,6 @@ $(function () {
     })
   };
 
-  Vedlegg_3 = () => {
-    'use strict';
-
-    let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
-    let Vedlegg_3 = [
-      //'utdypende_forklaringer',
-      'definisjoner'
-    ];
-
-    return $.map(Vedlegg_3, function (value, index) {
-      return Fldr_3 + value + '.html';
-    })
-
-  };
-
 
   // Laster inn HTML innholdet på siden
   Last_Innhold = () => {
@@ -85,7 +70,6 @@ $(function () {
     $('#left_navbar').load(Nav_Fldr + 'left_nav.html');
 
     // Laster inn hovedinnholdet og vedleggene
-    let Definisjoner = Vedlegg_3();
     let Veiledning = Vedlegg_1();
     let Bestemmelser = Hoved_Innholdet();
 
@@ -100,24 +84,29 @@ $(function () {
     }); */
 
     // Last inn veiledningen
-/*     $.each(Veiledning, function (index, value) {
+    $.each(Veiledning, function (index, value) {
       $.get(value, function (data) {
       })
 
         .done(function (data) {
-          $(data).appendTo('#veiledning')
-        });
-    }); */
-
-    // Last inn definisjoner
-    $.each(Definisjoner, function (index, value) {
-      $.get(value, function (data) {
-      })
-
-        .done(function (data) {
-          $(data).appendTo('#definisjoner')
+          $(data).appendTo('#retningslinje')
         });
     });
+
+    // Last inn definisjoner og utdypende forklaringer
+/*     let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
+    $.get(Fldr_3 + 'utdypende_forklaringer.html', function (data) {
+    })
+
+      .done(function (data) {
+        $(data).appendTo('#utdypende')
+      });
+
+    $.get(Fldr_3 + 'definisjoner.html', function (data) {
+    })
+      .done(function (data) {
+        $(data).appendTo('#definisjoner')
+      }); */
 
   };
 
@@ -128,19 +117,20 @@ $(function () {
 
     // Egne pseudo-funksjoner og add-in for highlight
     $.get('main/js/funksjoner/pseudo_exp.js');
-    $.get('main/js/funksjoner/highlight.js')
-    $.get('main/js/funksjoner/finn_ord.js')
+    $.get('main/js/funksjoner/highlight.js');
+    $.get('main/js/funksjoner/finn_ord.js');
 
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
 
     // Eventer for body (veiledning)
-    $.get(Veil_Fldr + 'vis_veiledning.js');
     $.get(Veil_Fldr + 'legg_til.js');
+    $.get(Veil_Fldr + 'retningslinje.js');
     $.get(Veil_Fldr + 'definisjoner.js');
+    $.get(Veil_Fldr + 'vis_veiledning.js');
 
-    // Aktiverer søkefeltet
+    // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');
 
   };
