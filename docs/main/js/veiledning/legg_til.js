@@ -9,8 +9,8 @@ $(function () {
   Lenke_Til_Veiledning = () => {
     'use strict';
 
-    let Search_In = $('p', '#bestemmelser');
-    let Search_For = ['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'støyfølsomt bruksformål'];
+    let Search_In = $('p:not(td > p)', '#bestemmelser');
+    let Search_For = ['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'Støyfølsomt bruksformål'];
 
     let Start_HTML = '<a class="intern_lenke" data-toggle="collapse" ';
     let Slutt_HTML = '</a>';
@@ -26,11 +26,11 @@ $(function () {
       let reg_exp = new RegExp('\\b(' + Search_For[i] + ')\\b', 'i');
 
       $(Search_In).each(function (index, value) {
-        let ord_funnet = reg_exp.test($(value).text());
+          let ord_funnet = reg_exp.test($(value).text());
 
-        if (ord_funnet && $(value).is(':visible')) {
-          $(value).html($(value).html().replace(reg_exp, Ny_HTML[i]));
-        };
+          if (ord_funnet) {
+            $(value).html($(value).html().replace(reg_exp, Ny_HTML[i]));
+          };
       });
     });
   };

@@ -26,7 +26,7 @@ $(function () {
 
     $(Definisjoner).each(function (index, value) {
       'use strict';
-      let Innhold = $(value).nextUntil('h4');
+      let Innhold = $(value).nextUntil(':header');
       let Tittel = $(value).text();
 
       // HTML som skal erstattes
