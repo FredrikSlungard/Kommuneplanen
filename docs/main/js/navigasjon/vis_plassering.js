@@ -1,17 +1,13 @@
 /* Viser nærmeste overskrift i navigasjonen slik at brukeren ser hvor de er */
 $(function () {
-  let windowHeight = $(window).height();
-  let Overskrifter = $('h1, h2', 'main')
+  let Overskrifter = $('h1, h2', 'main');
 
   Nærmeste_Overskrift = () => {
     let Curr_Location = $(window).scrollTop();
 
     let Nærmeste = Overskrifter.sort(function (a, b) {
-      let a_pos = $(a).position().top;
-      let b_pos = $(b).position().top;
-
-      let prev_Diff = Math.abs(Curr_Location - a_pos);
-      let curr_Diff = Math.abs(Curr_Location - b_pos);
+      let prev_Diff = Math.abs(Curr_Location - $(a).position().top);
+      let curr_Diff = Math.abs(Curr_Location - $(b).position().top);
 
       if (prev_Diff > curr_Diff) {
         return 1;
@@ -26,12 +22,41 @@ $(function () {
 
   };
 
+  // Finner den matchende overskriften i navigasjonen og viser en higlight
+  Overskrift_Navigasjon = () => {
+    Finn_Overskrift = Nærmeste_Overskrift();
+
+    if (Finn_Overskrift != undefined) {
+      let Closest_Heading = $(Finn_Overskrift).text().toLowerCase();
+      let Overskrift_Type = Finn_Overskrift.prop('nodeName').toLowerCase();
+      let Nav_Menu = $(Overskrift_Type, '#nav_innhold');
+
+      return $(Nav_Menu).filter(function (index, value) {
+        let Nav_Overskrift = $(value).text().toLowerCase(); 
+
+        if (Closest_Heading.indexOf(Nav_Overskrift) !== -1) {
+
+          return $(value)
+        };
+      });
+
+    };
+  };
 });
 
 
 // Tar brukeren til lokasjonen som har søketeksten
 $(document).on('scroll', function (event) {
-  Nærmeste_Overskrift().css('color','blue');
+  let TEmp = Overskrift_Navigasjon();
+
+  //$(TEmp).effect("highlight", { color: "#86ac41" }, 3000); Den finner riktig
+  //$(Nærmeste_Overskrift()).css('color','blue'); Denne fungerer riktig.
+
+  // Hvorfor får vi ikke valgt riktig
+  $(TEmp).css('color','black');
+
+  //$(TEmp).css('color','red');
+  //console.log($(TEmp).text());
 });
 
 /* let windowHeight = $(window).height();
