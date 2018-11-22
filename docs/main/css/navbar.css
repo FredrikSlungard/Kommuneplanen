@@ -98,3 +98,9 @@ Fjerner kulepunkter i lister <ul>*/
 .usynlig {
   display: none;
 }
+
+/* Oveskriftene i navigasjonen */
+#nav_innhold h1 {
+  border-top:1.5px solid #2c7873;
+  padding-top: 5px;
+}

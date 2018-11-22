@@ -6,10 +6,11 @@ Ved å bruke document knyttes også dynamiske elementer til knappen
 */
 $(document).on('click', 'button', function () {
   'use strict';
-
+  
   if ($(this).hasClass('collapsible') || $(this).hasClass('visible')) {
 
     let Innhold = $(this).next('.content');
+
     $(this).toggleClass("collapsible visible");
     Innhold.slideToggle('fast');
     

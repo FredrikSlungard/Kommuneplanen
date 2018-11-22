@@ -112,7 +112,7 @@ $(function () {
     let Liste_ID = 'veil' + Nærmeste_Overskrift.replace(/[^A-Za-z0-9]/g, '_');
     
 
-    let btn_div = '<button class="collapsible">';
+    let btn_div = '<button class="collapsible>"';
     let inn_div = '<div class="content">';
     let Liste_Div = '<div id="' + Liste_ID + '" class="collapse"></div>';
 
@@ -132,60 +132,18 @@ $(function () {
     // Første item vil alltid være største overskrift
     let Hoved_Overskrift = $(Innhold).prop('nodeName').toLowerCase();
 
-    // Det skjer noe rart med denne asssssss
-    Innhold = $(Innhold).each(function(index,value) {
-      if ($(value).prop('nodeName').toLowerCase() === Hoved_Overskrift) {
+    Innhold = $(Innhold).replaceWith( function() {
+      if ($(this).prop('nodeName').toLowerCase() === Hoved_Overskrift) {
+        let Temp = $();
+        Temp = btn_div + $(this).text + '</button>';
+        return Temp;
 
-        return $(value).wrapInner(btn_div +'</div>');
-        
       };
     });
 
     Innhold = $(Innhold).wrapInner(Liste_Div);
 
     return Innhold
-
-      
-
-/*     return $(Innhold).each(function(index, value) {
-      if ($(value).prop('nodeName').toLowerCase() === Hoved_Overskrift) {
-        console.log($(value).text());
-        //</div>
-        let header = $(value).wrapInner(btn_div + $(value).text() + '</div>');
-        //let content = $(value).nextUntil(Hoved_Overskrift);
-          
-        let temp = header //+ content.wrapInner(inn_div + '</div>');
-
-        return temp;
-
-      };
-    }) */
-    
-    
-    /*
-    let Overskrifter = $(Innhold).filter(function(index,value) {
-      if ($(value).is(Hoved_Overskrift)) {
-        return value
-      };
-    });
-
-    let Hoved_Innhold = $(Innhold.nextUntil(Hoved_Overskrift));
-
-    $(Hoved_Innhold).each(function(index, value) {
-      $(value).css('color','blue');
-    });
-
-    let Main = $(Overskrifter).map(function(index, value) {
-
-      //console.log($(Hoved_Innhold[index]).html());
-
-      return $(value).html() + $(Hoved_Innhold[0]).html();
-    }); */
-
-    //console.log($(Main).html());
-    //lala.css('color', 'blue');
-
-
 
   };
 
