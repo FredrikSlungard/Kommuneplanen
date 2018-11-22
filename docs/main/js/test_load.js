@@ -123,6 +123,7 @@ $(function () {
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
+    $.get(Nav_Fldr + 'vis_Plassering.js');
 
     // Eventer for body (veiledning)
     $.get(Veil_Fldr + 'legg_til.js');

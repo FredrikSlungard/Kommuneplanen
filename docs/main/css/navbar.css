@@ -69,6 +69,10 @@ Fjerner kulepunkter i lister <ul>*/
   padding-left: 15px;
 }
 
+.active {
+  color: #DBCA69;
+}
+
 /* Div for søketreffene */
 #søke_treff a:hover {
   color: #DBCA69;

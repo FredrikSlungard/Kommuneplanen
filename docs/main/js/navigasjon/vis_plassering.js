@@ -47,35 +47,9 @@ $(function () {
 
 // Tar brukeren til lokasjonen som har søketeksten
 $(document).on('scroll', function (event) {
-  let TEmp = Overskrift_Navigasjon();
+  let Temp = Overskrift_Navigasjon().children('a');
 
-  //$(TEmp).effect("highlight", { color: "#86ac41" }, 3000); Den finner riktig
-  //$(Nærmeste_Overskrift()).css('color','blue'); Denne fungerer riktig.
+  $('*', '#nav_innhold').removeClass('active');
+  $(Temp).addClass('active');
 
-  // Hvorfor får vi ikke valgt riktig
-  $(TEmp).css('color','black');
-
-  //$(TEmp).css('color','red');
-  //console.log($(TEmp).text());
 });
-
-/* let windowHeight = $(window).height();
-    let Item = $(event.target);
-    let Result = Returner_Første_Treff($(event.target), $('p, :header, td, li', 'main'));
-
-    if (Item != undefined) {
-      // Gjør at den scroller til midten av siden hvis overskriften er lavere enn høyden på vinduet
-      let Destinasjon = Item.attr('name');
-      if (Destinasjon < windowHeight || Destinasjon !== 0) {
-        Destinasjon -= (windowHeight / 2);
-      };
-
-      // Scroller til destinasjonen
-      $('html, body').animate({
-        scrollTop: (Destinasjon)
-      }, 1000);
-
-      $(Result).effect("highlight", { color: "#86ac41" }, 3000);
-
-    }
-  }); */
