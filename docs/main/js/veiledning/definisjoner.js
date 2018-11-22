@@ -7,7 +7,7 @@ $(function () {
   Finn_Definisjoner = () => {
     'use strict';
 
-    let Content = $('p, li, td', '#bestemmelser');
+    let Content = $('*:not(* > :header)', '#bestemmelser');
     /* Sorterer slik at vi leter etter den lengste strengen først, hvis ikke kan "enebolig med sekundær" ikke finnet ordet fordi "enebolig" allerede er funnet (og lagt til som hyperlenke) */
     let Definisjoner = $('h4', '#definisjoner').sort(function (a, b) {
       let a_len = $(a).text().length;

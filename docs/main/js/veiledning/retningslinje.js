@@ -82,15 +82,14 @@ $(function () {
   Finn_Innhold_Liste = ($Kilde) => {
     'use strict';
 
-    let Let_Etter = Formater_Overskrift($($Kilde).prev(':header').first());
+    let Let_Etter = Formater_Overskrift($($Kilde).prev(':header').first().toLowerCase());
     let Retningslinjer = $('h2', '#retningslinje');
 
     // Finner innholdet som skal brukes i nedtrekkslisten
-
     let Overskrift = $(Retningslinjer).filter(function (index, value) {
       let retn = $(value).text().toLowerCase();
 
-      if (retn.indexOf(Let_Etter.toLowerCase()) !== -1) {
+      if (retn.indexOf(Let_Etter) !== -1) {
         return $(value);
       };
     });

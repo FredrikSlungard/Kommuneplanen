@@ -86,14 +86,13 @@ $(function () {
 
           Liste_Innhold += btn_Start + Lenke_Tekst + btn_End;
 
-          Liste_Innhold += innhold_Start +
-            $(value).html() + innhold_end;
+          Liste_Innhold += innhold_Start + $(value).text() + innhold_end;
 
         }
 
         else if ($(value).is(':header')) {
 
-          Liste_Innhold += btn_Start + $(value).html() + btn_End;
+          Liste_Innhold += btn_Start + $(value).text() + btn_End;
 
         };
 
@@ -102,7 +101,7 @@ $(function () {
       else {
 
         if ($(value).is(':header')) {
-          Liste_Innhold += btn_Start + $(value).html() + btn_End;
+          Liste_Innhold += btn_Start + $(value).text() + btn_End;
         }
 
         else {
