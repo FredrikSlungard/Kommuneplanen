@@ -94,7 +94,7 @@ $(function () {
     });
 
     // Last inn definisjoner og utdypende forklaringer
-/*     let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
+    let Fldr_3 = 'main/html/veiledning/vedlegg_3/';
     $.get(Fldr_3 + 'utdypende_forklaringer.html', function (data) {
     })
 
@@ -106,7 +106,7 @@ $(function () {
     })
       .done(function (data) {
         $(data).appendTo('#definisjoner')
-      }); */
+      });
 
   };
 

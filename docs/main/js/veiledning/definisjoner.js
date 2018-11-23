@@ -2,7 +2,7 @@
 
 $(function () {
 
-  const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover"; data-trigger="focus" data-placement="right" title="';
+  const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" title="';
 
   Finn_Definisjoner = () => {
     'use strict';
@@ -21,13 +21,12 @@ $(function () {
         return 0;
       }
     });
-    
-    
 
     $(Definisjoner).each(function (index, value) {
       'use strict';
       let Innhold = $(value).nextUntil(':header');
       let Tittel = $(value).text();
+      Content = $('*:not(* > :header)', '#bestemmelser');
 
       // HTML som skal erstattes
       let Pop_HTML = Start_HTML + Tittel + '" data-content="' + $(Innhold).html() + '">' + Tittel + '</a>';
@@ -37,7 +36,7 @@ $(function () {
       $(Content).each(function (index, value) {
         let ord_funnet = reg_exp.test($(value).text());
 
-        if (ord_funnet) {
+        if (ord_funnet && $(value).is('a') === false) {
           $(value).html($(value).html().replace(reg_exp, Pop_HTML));
         };
       });
