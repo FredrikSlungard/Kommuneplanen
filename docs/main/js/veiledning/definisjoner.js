@@ -2,13 +2,16 @@
 
 $(function () {
 
-  const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" title="';
+  const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover" data-trigger="focus" data-placement="right"';
+
+  //let min_Html = start_html + Tittel + '</a>';
+  //let start_html = '<a class="inter_popover" href="#" data-toggle="popover">';
 
   Finn_Definisjoner = () => {
     'use strict';
 
-    let Content = $('*:not(* > :header)', '#bestemmelser');
     /* Sorterer slik at vi leter etter den lengste strengen først, hvis ikke kan "enebolig med sekundær" ikke finnet ordet fordi "enebolig" allerede er funnet (og lagt til som hyperlenke) */
+    let Content = $('*:not(* > :header)', '#bestemmelser');
     let Definisjoner = $('h4', '#definisjoner').sort(function (a, b) {
       let a_len = $(a).text().length;
       let b_len = $(b).text().length;
@@ -26,22 +29,21 @@ $(function () {
       'use strict';
       let Innhold = $(value).nextUntil(':header');
       let Tittel = $(value).text();
-      Content = $('*:not(* > :header)', '#bestemmelser');
-
-      // HTML som skal erstattes
-      let Pop_HTML = Start_HTML + Tittel + '" data-content="' + $(Innhold).html() + '">' + Tittel + '</a>';
       let reg_exp = new RegExp('\\b(' + Tittel + ')\\b', 'i');
+
+      let title_html = ' data-original-title="' + Tittel + '" ';
+      let cont_html = 'data-content="' + $(Innhold).html() + '">';
+      let Sett_Inn = Start_HTML + title_html + cont_html + Tittel + '</a>';
 
       // Går gjennom hver paragraf og setter inn verdiene hvis innholdet er synlig
       $(Content).each(function (index, value) {
         let ord_funnet = reg_exp.test($(value).text());
 
-        if (ord_funnet && $(value).is('a') === false) {
-          $(value).html($(value).html().replace(reg_exp, Pop_HTML));
+        if (ord_funnet) {
+          $(value).html($(value).html().replace(reg_exp, Sett_Inn))
         };
       });
     });
-
   };
 
   // Aktiverer eventer for popover
@@ -57,3 +59,48 @@ $(function () {
   });
 });
 
+
+ /* Finn_Definisjoner = () => {
+    'use strict';
+
+    let Content = $('*:not(* > :header)', '#bestemmelser');
+    /* Sorterer slik at vi leter etter den lengste strengen først, hvis ikke kan "enebolig med sekundær" ikke finnet ordet fordi "enebolig" allerede er funnet (og lagt til som hyperlenke) */
+    /*let Definisjoner = $('h4', '#definisjoner').sort(function (a, b) {
+      let a_len = $(a).text().length;
+      let b_len = $(b).text().length;
+
+      if (a_len < b_len) {
+        return 1;
+      } else if (a_len > b_len) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    
+    
+
+    $(Definisjoner).each(function (index, value) {
+      'use strict';
+      let Innhold = $(value).nextUntil(':header');
+      let Tittel = $(value).text();
+
+      // HTML som skal erstattes
+      let Pop_HTML = Start_HTML + Tittel + '" data-content="' + $(Innhold).html() + '">' + Tittel + '</a>';
+      let reg_exp = new RegExp('\\b(' + Tittel + ')\\b', 'i');
+
+      // Går gjennom hver paragraf og setter inn verdiene hvis innholdet er synlig
+      $(Content).each(function (index, value) {
+        let ord_funnet = reg_exp.test($(value).text());
+
+        if (ord_funnet) {
+          console.log($(value).html());
+          $(value).html($(value).html().replace(reg_exp, Pop_HTML));
+        };
+      });
+    });
+
+  };
+
+  // Aktiverer eventer for popover
+  Finn_Definisjoner(); */
