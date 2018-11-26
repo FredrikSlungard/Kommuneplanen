@@ -1,18 +1,15 @@
 /* Legger til veiledningstekst for definisjonene i kommuneplanen, disse vises som en popover der tittelen på definisjonen er overskrift og teksten er innholdet */
-
 $(function () {
 
-  const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover" data-trigger="focus" data-placement="right"';
+  let Definisjoner = $('h4', '#definisjoner');
 
-  //let min_Html = start_html + Tittel + '</a>';
-  //let start_html = '<a class="inter_popover" href="#" data-toggle="popover">';
-
-  Finn_Definisjoner = () => {
-    'use strict';
-
+  // Setter inn lenker og legger til klasse som gjør at popover kan aktiveres for definisjonene.
+  Finn_Lenker_Til_Popper = () => {
     /* Sorterer slik at vi leter etter den lengste strengen først, hvis ikke kan "enebolig med sekundær" ikke finnet ordet fordi "enebolig" allerede er funnet (og lagt til som hyperlenke) */
+    const Start_HTML = '<a class="inter_popover" href="#" data-toggle="popover">';
+
     let Content = $('*:not(* > :header)', '#bestemmelser');
-    let Definisjoner = $('h4', '#definisjoner').sort(function (a, b) {
+    Definisjoner.sort(function (a, b) {
       let a_len = $(a).text().length;
       let b_len = $(b).text().length;
 
@@ -27,13 +24,10 @@ $(function () {
 
     $(Definisjoner).each(function (index, value) {
       'use strict';
-      let Innhold = $(value).nextUntil(':header');
+
       let Tittel = $(value).text();
       let reg_exp = new RegExp('\\b(' + Tittel + ')\\b', 'i');
-
-      let title_html = ' data-original-title="' + Tittel + '" ';
-      let cont_html = 'data-content="' + $(Innhold).html() + '">';
-      let Sett_Inn = Start_HTML + title_html + cont_html + Tittel + '</a>';
+      let Sett_Inn = Start_HTML + Tittel + '</a>';
 
       // Går gjennom hver paragraf og setter inn verdiene hvis innholdet er synlig
       $(Content).each(function (index, value) {
@@ -46,61 +40,94 @@ $(function () {
     });
   };
 
-  // Aktiverer eventer for popover
-  Finn_Definisjoner();
-  $('[data-toggle="popover"]').popover();
+  Finn_Lenker_Til_Popper();
 
-  // Forhindrer scrolling når brukeren trykker på popover (href tar brukeren til toppen)
-  $('.inter_popover').on('click', function (e) {
+  /* Overskriften i popover
+  Setter beste treff øverst (hvis det er flere matcher). Gjør en enkel sammenligning der vi antar at det beste treffet har minst differanse. */
+  Hent_Overskrift = (Valgt_Item) => {
     'use strict';
 
-    e.preventDefault();
-    return true;
-  });
-});
+    let Søk_Etter = $(Valgt_Item).text().toLowerCase();
+    let Veil_Overskrfift = $(Definisjoner).filter(function (index, value) {
+      let overskrift = $(value).text().toLowerCase();
 
-
- /* Finn_Definisjoner = () => {
-    'use strict';
-
-    let Content = $('*:not(* > :header)', '#bestemmelser');
-    /* Sorterer slik at vi leter etter den lengste strengen først, hvis ikke kan "enebolig med sekundær" ikke finnet ordet fordi "enebolig" allerede er funnet (og lagt til som hyperlenke) */
-    /*let Definisjoner = $('h4', '#definisjoner').sort(function (a, b) {
-      let a_len = $(a).text().length;
-      let b_len = $(b).text().length;
-
-      if (a_len < b_len) {
-        return 1;
-      } else if (a_len > b_len) {
-        return -1;
-      } else {
-        return 0;
-      }
+      if (overskrift.indexOf(Søk_Etter) !== -1) {
+        return $(value);
+      };
     });
-    
-    
 
-    $(Definisjoner).each(function (index, value) {
-      'use strict';
-      let Innhold = $(value).nextUntil(':header');
-      let Tittel = $(value).text();
+    if (Veil_Overskrfift.length > 1) {
+      Veil_Overskrfift.sort(function (a, b) {
+        let a_len = Math.abs($(a).text().length - Søk_Etter.length);
+        let b_len = Math.abs($(b).text().length - Søk_Etter.length);
 
-      // HTML som skal erstattes
-      let Pop_HTML = Start_HTML + Tittel + '" data-content="' + $(Innhold).html() + '">' + Tittel + '</a>';
-      let reg_exp = new RegExp('\\b(' + Tittel + ')\\b', 'i');
-
-      // Går gjennom hver paragraf og setter inn verdiene hvis innholdet er synlig
-      $(Content).each(function (index, value) {
-        let ord_funnet = reg_exp.test($(value).text());
-
-        if (ord_funnet) {
-          console.log($(value).html());
-          $(value).html($(value).html().replace(reg_exp, Pop_HTML));
-        };
+        if (a_len > b_len) {
+          return 1;
+        } else if (a_len < b_len) {
+          return -1;
+        } else {
+          return 0;
+        }
       });
-    });
+    };
 
+    return $(Veil_Overskrfift[0]);
   };
 
-  // Aktiverer eventer for popover
-  Finn_Definisjoner(); */
+  /* Innholdet i popover */
+  Pop_Innhold = (Overskrift) => {
+    'use strict';
+
+    let Innhold = $();
+
+    $(Definisjoner.each(function (index, value) {
+      if ($(value).text() === $(Overskrift).text()) {
+
+        Innhold = $(value).nextUntil(':header');
+        // Denne er OK console.log("Item: " + $(Item).text() + " Verdi: " + $(value).text());
+
+        // Denne stemmer console.log($(Temp).html());
+        //return $(Temp).html();
+      };
+    }));
+
+    if (Innhold !== undefined) {
+      return Innhold;
+    };
+  };
+
+  /* Lager popover til det valgte itemet */
+  Lag_Popover = (Item) => {
+    'use strict';
+
+    let Tittel = Hent_Overskrift(Item);
+    let Innhold = Pop_Innhold(Tittel);
+
+    return $(Item).popover({
+      html: true,
+      placement: 'right',
+      trigger: 'focus',
+
+      title: $(Tittel).text(),
+      content: $(Innhold).html()
+
+    });
+  };
+  
+
+
+  /* Forhindrer scrolling når brukeren trykker på popover (href tar brukeren til toppen) */
+  $('.inter_popover').on('click', function (e) {
+    'use strict';
+    e.preventDefault();
+
+    // Lager en ny popover hvis det ikke er noe der fra før
+    if (!$(this).data("bs.popover")) {
+      Lag_Popover(this);
+      $(this).popover('show');
+    };
+    
+    return true;
+
+  });
+});
