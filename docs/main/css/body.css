@@ -10,6 +10,7 @@ main h1 {
   border-top:1.5px solid #616161;
   border-bottom:1.5px solid #616161;
   padding: 15px 0px 15px 0px;
+  text-align: center;
 }
 
 main h2 {

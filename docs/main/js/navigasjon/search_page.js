@@ -19,6 +19,16 @@ $(function () {
       };
     });
 
+    // Sorterer søketreffene slik at overskriftene kommer først
+    Treff.sort(function (a, b) {
+
+      if ($(a).is(':header')) {
+      } 
+      else {
+        return 0;
+      };
+    });
+
     // Gjør om til en <ul> liste for orden og <a> tag med referanse til posisjon.
     return $.map(Treff, function (value, i) {
       let Top_Pos = $(value).offset().top;
@@ -66,7 +76,6 @@ $(function () {
     let Search_Prase = $(this).val();
 
     if (Search_Prase.length >= 3) {
-
 
       Endre_Synlighet(true);
       let Funnet_Ord = Treff_I_Dokument(Search_Prase);
