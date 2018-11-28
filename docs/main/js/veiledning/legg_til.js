@@ -11,7 +11,7 @@ $(function () {
 
     let Search_In = $('p:not(td > p)', '#bestemmelser');
     let Search_For = ['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'Støyfølsomt bruksformål'];
-
+    
     let Start_HTML = '<a class="intern_lenke" data-toggle="collapse" ';
     let Slutt_HTML = '</a>';
 

@@ -13,7 +13,7 @@
 }
 
 .active, 
-.collapsible:hover, 
+.collapsible:hover 
 {
   background-color: #34675c;
   color: white;

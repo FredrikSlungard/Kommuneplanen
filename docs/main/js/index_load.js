@@ -127,10 +127,12 @@ $(function () {
 
     // Eventer for body (veiledning)
     $.get(Veil_Fldr + 'legg_til.js');
-    //$.get(Veil_Fldr + 'retningslinje.js');
     $.get(Veil_Fldr + 'definisjoner.js');
     $.get(Veil_Fldr + 'vis_veiledning.js');
 
+    $.get(Veil_Fldr + 'retningslinje_lenke.js');
+    $.get(Veil_Fldr + 'retningslinje_test.js');
+    
     // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');
 

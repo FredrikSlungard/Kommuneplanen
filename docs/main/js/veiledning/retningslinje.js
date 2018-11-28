@@ -8,32 +8,6 @@ Data-toggle bestemmer hva som skjer, hvis den er usynlig fra før blir den synli
 */
 $(function () {
 
-
-  // Returnerer tekstbiten som skal finnes i retningslinjene
-  Formater_Overskrift = (Source) => {
-    'use strict';
-
-    let Item_Text = $(Source).text();
-    let First_Pos = Item_Text.match(/[a-zA-Z]/); // Finner første bokstav
-    let Last_Pos = Item_Text.length;
-
-    // Første bokstav
-    if (First_Pos === null) {
-      First_Pos === 0;
-    }
-    else {
-      First_Pos = First_Pos.index;
-    };
-
-    // Siste bokstav
-    if (Item_Text.indexOf('(') !== -1) {
-      Last_Pos = Item_Text.indexOf('(');
-    };
-
-    return Item_Text.substring(First_Pos, Last_Pos).trim();
-
-  };
-
   // Legger til hyperlenker til veiledningsteksten
   // Search For kan erstattes med overskriftene i definisjonene?
   Lenke_Til_Retningslinje = () => {

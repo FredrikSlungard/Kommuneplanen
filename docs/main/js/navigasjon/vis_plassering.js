@@ -3,22 +3,42 @@ $(function () {
   let Overskrifter = $('h1, h2', 'main');
 
   Nærmeste_Overskrift = () => {
+    'use strict'
     let Curr_Location = $(window).scrollTop();
 
-    let Nærmeste = Overskrifter.sort(function (a, b) {
-      let prev_Diff = Math.abs(Curr_Location - $(a).position().top);
-      let curr_Diff = Math.abs(Curr_Location - $(b).position().top);
+    if (Curr_Location >= 10) {
+      Overskrifter.sort(function (a, b) {
+        let prev_Diff = Math.abs(Curr_Location - $(a).position().top);
+        let curr_Diff = Math.abs(Curr_Location - $(b).position().top);
 
-      if (prev_Diff > curr_Diff) {
-        return 1;
-      } else if (prev_Diff < curr_Diff) {
-        return -1;
-      } else {
-        return 0;
-      };
-    });
+        if (prev_Diff > curr_Diff) {
+          return 1;
+        } else if (prev_Diff < curr_Diff) {
+          return -1;
+        } else {
+          return 0;
+        };
+      });
 
-    return $(Nærmeste[0]);
+      return $(Overskrifter[0]);
+    }
+    // Hvis scrollehøyden er for lav sorteres den feil, dette gjelder kun for lave scrolltall
+    else {
+      Overskrifter.sort(function (a, b) {
+        let a_top = Math.abs(Curr_Location - $(a).position().top);
+        let b_top = Math.abs(Curr_Location - $(b).position().top);
+
+        if (a_top > b_top) {
+          return 1;
+        } else if (a_top < b_top) {
+          return -1;
+        } else {
+          return 0;
+        };
+      });
+
+      return $('h1, h2', 'main').first();
+    };
 
   };
 
@@ -43,7 +63,6 @@ $(function () {
     };
   };
 });
-
 
 // Tar brukeren til lokasjonen som har søketeksten
 $(document).on('scroll', function (event) {

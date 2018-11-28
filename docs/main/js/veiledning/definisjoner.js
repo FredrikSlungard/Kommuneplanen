@@ -108,7 +108,7 @@ $(function () {
       placement: 'right',
       trigger: 'focus',
 
-      title: $(Tittel).text(),
+      title: 'Definisjon av: ' + $(Tittel).text(),
       content: $(Innhold).html()
 
     });

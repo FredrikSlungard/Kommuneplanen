@@ -33,3 +33,30 @@ Returner_Første_Treff = (Søk_Etter, Søk_Her) => {
       return Result[Index_Treff];
   };
 };
+
+
+// Trekker ut bokstavbiten av en streng, brukes primært for overskrifter
+Formater_Overskrift = (Source) => {
+  'use strict';
+
+  let Item_Text = $(Source).text();
+  let First_Pos = Item_Text.match(/[a-åA-Å]/); // Finner første bokstav
+  let Last_Pos = Item_Text.length;
+  
+  // Første bokstav
+  if (First_Pos === null) {
+    First_Pos === 0;
+  }
+  else {
+    First_Pos = First_Pos.index;
+  };
+
+  // Siste bokstav
+  if (Item_Text.indexOf('(') !== -1) {
+    Last_Pos = Item_Text.indexOf('(');
+  };
+
+  return Item_Text.substring(First_Pos, Last_Pos).trim();
+
+};
+
