@@ -30,32 +30,20 @@ $(function () {
   /* Leter opp innholdet som skal brukes i nedtrekkslisten.
   Leter gjennom overskriftene i retningslinjene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
   Lag_Veiledning = (Lenke_Trykket_På) => {
-    let Innhold = Finn_Innhold_Liste(Lenke_Trykket_På).clone();
+    let Innhold = Finn_Innhold_Liste(Lenke_Trykket_På);
     let Overskrift_Closest = $(Lenke_Trykket_På).prev(':header').first();
     let Hoved_Header = $(Innhold).prop('nodeName').toLowerCase();
-    let liste_Id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
 
-    let Temp = $(Innhold).each(function(index, value) {
+    let liste_id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
+    let liste_div = '<div class collapse id=' + liste_id + '</div>'
+    // OK, wrapper riktig
+    $(Innhold).wrapAll(liste_div);
+    $(Innhold).each(function (i, val) {
       
-      if ($(value).prop('nodeName').toLowerCase() === 'h3') {
-        let Header = '<button class="collapsible>"' + $(value).text() + '</button>';
-        let Content = '<div class="content">';
-        let Neste = $(value).nextUntil('h2', '#retningslinje');
-
-        console.log($(Neste).length);
-        
-
-        Content += $(Neste).each(function(index, value) {
-         
-          return $(value).html();
-        });
-
-        Content += '</div>';
-
-        //console.log(Content);
-
-      };
+      //console.log($(val).html());
+      
     });
+
   };
 
 
@@ -82,3 +70,31 @@ $(function () {
     };
   });
 });
+
+
+/* let Temp = $();
+$(Innhold).each(function (index, value) {
+
+  if ($(value).prop('nodeName').toLowerCase() === 'h3') {
+    let Header = '<button class="collapsible>"' + $(value).text() + '</button>';
+    let Content = '<div class="content">';
+
+    let Neste = $(value).nextUntil('h2 h3');
+    //console.log($(value).html());
+
+
+    Content += $(Neste).each(function (index, value) {
+      return $(value).html();
+    });
+
+    Content += '</div>';
+
+    console.log($(Header + Content).html());
+    Temp += $(Header + Content);
+
+  }
+  else if ($(value).prop('nodeName').toLowerCase() === 'h4') {
+
+
+  };
+}); */

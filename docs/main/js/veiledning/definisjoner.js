@@ -84,10 +84,7 @@ $(function () {
       if ($(value).text() === $(Overskrift).text()) {
 
         Innhold = $(value).nextUntil(':header');
-        // Denne er OK console.log("Item: " + $(Item).text() + " Verdi: " + $(value).text());
-
-        // Denne stemmer console.log($(Temp).html());
-        //return $(Temp).html();
+        
       };
     }));
 
