@@ -42,6 +42,7 @@ $(document).on('click', '.retningslinje', function (e) {
 $(document).on('click', '.intern_lenke', function (e) {
   'use strict'
 
+  e.preventDefault()
   let Ref_ID = $(this).attr('href').replace('#', '');
   let para_end = $(this).parent();
 
@@ -57,4 +58,6 @@ $(document).on('click', '.intern_lenke', function (e) {
     $(Innhold).insertAfter(para_end);
 
   };
+
+  $('#' + Ref_ID).slideToggle('fast');
 });

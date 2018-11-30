@@ -12,7 +12,7 @@ $(function () {
     let Search_In = $('p:not(td > p)', '#bestemmelser');
     let Search_For = ['Fortetting', 'Boligfortetting', 'Frittliggende småhusbebyggelse', 'Konsentert småhusbebyggelse', 'Støyfølsomt bruksformål'];
     
-    let Start_HTML = '<a class="intern_lenke" data-toggle="collapse" ';
+    let Start_HTML = '<a class="intern_lenke" ';
     let Slutt_HTML = '</a>';
 
     // Den nye HTML strengen (ref endres til korrekt syntaks, fjerner mellomrom)
@@ -114,5 +114,43 @@ $(function () {
 
     return Start_Liste + Liste_Innhold + innhold_end;
 
+  };
+});
+
+
+$(function () {
+  // Flytter veiledningen til etter lenken som brukeren trykket på
+  Flytt_Innhold = (Lenke) => {
+    let Innhold = Finn_Innhold_Liste(Lenke).clone();
+    let Hoved_Header = $(Innhold).prop('nodeName').toLowerCase();
+
+    $(Innhold).insertAfter($(Lenke));
+    return $(Innhold);
+
+  };
+
+  /* Leter opp innholdet som skal brukes i nedtrekkslisten.
+  Leter gjennom overskriftene i retningslinjene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
+  Lag_Veiledning = (Lenke_Trykket_På) => {
+
+    let Overskrift_Closest = $(Lenke_Trykket_På).prev(':header').first();
+    let liste_id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
+    let liste_div = '<div class="collapse" id=' + liste_id + '></div>'
+    let veiledning = $(Flytt_Innhold(Lenke_Trykket_På).wrapAll(liste_div));
+
+    // Velg neste overskrift eller hovedoveskrift, hvis ikke velg frem til siste element
+    $(veiledning).each(function (index, value) {
+      if ($(value).prop('nodeName').toLowerCase() === 'h3') {
+
+        let Neste = $(value).nextUntil('h2, h3');
+        if (Neste.length === undefined) {
+          Neste = $(veiledning).last();
+        };
+
+        $(value).replaceWith('<button class="collapsible">' + $(value).text() + '</button>');
+        $(Neste).wrapAll('<div class="content"></div>')
+
+      };
+    });
   };
 });
