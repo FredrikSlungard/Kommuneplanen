@@ -128,7 +128,7 @@ $(function () {
     // Eventer for body (veiledning)
     $.get(Veil_Fldr + 'legg_til.js');
     $.get(Veil_Fldr + 'definisjoner.js');
-    $.get(Veil_Fldr + 'vis_veiledning.js');
+    $.get(Veil_Fldr + 'eventer.js');
 
     $.get(Veil_Fldr + 'retningslinje_lenke.js');
     $.get(Veil_Fldr + 'retningslinje_test.js');

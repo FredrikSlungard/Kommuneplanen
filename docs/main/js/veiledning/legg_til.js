@@ -115,25 +115,4 @@ $(function () {
     return Start_Liste + Liste_Innhold + innhold_end;
 
   };
-
-  // Event når lenken klikkes på, setter sammen listen eller flytter den til lokasjonen.
-  $('.intern_lenke').on('click', function () {
-
-    let Ref_ID = $(this).attr('href').replace('#', '');
-    let para_end = $(this).parent();
-    
-    // Flytt innholdet hvis ID eksisterer fra før
-    if ($('#' + Ref_ID).length !== 0) {
-      $('#' + Ref_ID).insertAfter(para_end);
-    }
-
-    // Leter opp og henter innholdet fra definisjonene og bygger HTML streng
-    else {
-
-      let Innhold = HTML_Streng(this);
-      $(Innhold).insertAfter(para_end);
-
-    };
-
-  });
 });

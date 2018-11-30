@@ -27,74 +27,38 @@ $(function () {
 
   };
 
+  // Flytter veiledningen til etter lenken som brukeren trykket på
+  Flytt_Innhold = (Lenke) => {
+    let Innhold = Finn_Innhold_Liste(Lenke).clone();
+    let Hoved_Header = $(Innhold).prop('nodeName').toLowerCase();
+
+    $(Innhold).insertAfter($(Lenke));
+    return $(Innhold);
+
+  };
+
   /* Leter opp innholdet som skal brukes i nedtrekkslisten.
   Leter gjennom overskriftene i retningslinjene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
   Lag_Veiledning = (Lenke_Trykket_På) => {
-    let Innhold = Finn_Innhold_Liste(Lenke_Trykket_På);
+
     let Overskrift_Closest = $(Lenke_Trykket_På).prev(':header').first();
-    let Hoved_Header = $(Innhold).prop('nodeName').toLowerCase();
-
     let liste_id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
-    let liste_div = '<div class collapse id=' + liste_id + '</div>'
-    // OK, wrapper riktig
-    $(Innhold).wrapAll(liste_div);
-    $(Innhold).each(function (i, val) {
-      
-      //console.log($(val).html());
-      
+    let liste_div = '<div class="collapse" id=' + liste_id + '></div>'
+    let veiledning = $(Flytt_Innhold(Lenke_Trykket_På).wrapAll(liste_div));
+
+    // Velg neste overskrift eller hovedoveskrift, hvis ikke velg frem til siste element
+    $(veiledning).each(function (index, value) {
+      if ($(value).prop('nodeName').toLowerCase() === 'h3') {
+        let Neste = $(value).nextUntil('h2 h3');
+        if (Neste.length === undefined) {
+          Neste = $(veiledning).last();
+        };
+
+        $(value).replaceWith('<button class="collapsible">' + $(value).text() + '</button>');
+        $(Neste).wrapAll('<div class="content"></div>');
+
+      };
     });
 
   };
-
-
-
-  // Event når lenken klikkes på, setter sammen listen eller flytter den til lokasjonen.
-  $('.retningslinje').on('click', function () {
-    'use strict'
-
-    let Ref_ID = $(this).attr('href').replace('#', '');
-
-    // Flytt innholdet hvis ID eksisterer fra før
-    if (Ref_ID !== '' && $('#' + Ref_ID).length !== 0) {
-      $('#' + Ref_ID).insertAfter($(this));
-    }
-
-    // Leter opp og henter innholdet fra definisjonene og bygger HTML streng
-    else {
-      
-      Lag_Veiledning(this);
-
-      //let Innhold = HTML_Streng(this);
-      //$(Innhold).insertAfter($(this));
-
-    };
-  });
 });
-
-
-/* let Temp = $();
-$(Innhold).each(function (index, value) {
-
-  if ($(value).prop('nodeName').toLowerCase() === 'h3') {
-    let Header = '<button class="collapsible>"' + $(value).text() + '</button>';
-    let Content = '<div class="content">';
-
-    let Neste = $(value).nextUntil('h2 h3');
-    //console.log($(value).html());
-
-
-    Content += $(Neste).each(function (index, value) {
-      return $(value).html();
-    });
-
-    Content += '</div>';
-
-    console.log($(Header + Content).html());
-    Temp += $(Header + Content);
-
-  }
-  else if ($(value).prop('nodeName').toLowerCase() === 'h4') {
-
-
-  };
-}); */
