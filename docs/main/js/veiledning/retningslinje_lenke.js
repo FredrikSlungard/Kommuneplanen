@@ -9,7 +9,7 @@ $(function () {
 
     let Search_In = $('h1', '#bestemmelser');
     let Search_For = $('h2', '#retningslinje');
-    let Start_HTML = '<a class="retningslinje" data-toggle="collapse"';
+    let Start_HTML = '<a class="retningslinje"';
     let Slutt_HTML = '</a>'
     
     // Teksten brukeren ser, inneholder referanse og <a> tag

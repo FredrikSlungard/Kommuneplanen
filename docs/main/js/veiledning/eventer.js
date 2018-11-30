@@ -16,11 +16,11 @@ $(document).on('click', 'button', function () {
   };
 });
 
-
 // Viser veiledningsteksten for retningslinjer
-$(document).on('click', '.retningslinje', function () {
+$(document).on('click', '.retningslinje', function (e) {
   'use strict'
 
+  e.preventDefault()
   let Ref_ID = $(this).attr('href').replace('#', '');
 
   // Flytt innholdet hvis ID eksisterer fra før
@@ -32,13 +32,14 @@ $(document).on('click', '.retningslinje', function () {
   else {
     
     Lag_Veiledning(this);
-    $('#' + Ref_ID).css('display','block');
 
   };
+
+  $('#' + Ref_ID).slideToggle('fast');
 });
 
 // Event når lenken klikkes på, setter sammen listen eller flytter den til lokasjonen.
-$(document).on('click', '.intern_lenke', function () {
+$(document).on('click', '.intern_lenke', function (e) {
   'use strict'
 
   let Ref_ID = $(this).attr('href').replace('#', '');

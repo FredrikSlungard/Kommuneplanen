@@ -131,7 +131,7 @@ $(function () {
     $.get(Veil_Fldr + 'eventer.js');
 
     $.get(Veil_Fldr + 'retningslinje_lenke.js');
-    $.get(Veil_Fldr + 'retningslinje_test.js');
+    $.get(Veil_Fldr + 'retningslinje.js');
     
     // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');
