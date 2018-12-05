@@ -89,7 +89,7 @@ $(function () {
       })
 
         .done(function (data) {
-          $(data).appendTo('#veiledning')
+          $(data).appendTo('#retningslinje')
         });
     });
 
@@ -123,12 +123,16 @@ $(function () {
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
+    $.get(Nav_Fldr + 'vis_plassering.js');
 
     // Eventer for body (veiledning)
     $.get(Veil_Fldr + 'legg_til.js');
     $.get(Veil_Fldr + 'definisjoner.js');
-    $.get(Veil_Fldr + 'vis_veiledning.js');
+    $.get(Veil_Fldr + 'eventer.js');
 
+    $.get(Veil_Fldr + 'legg_til_lenker.js');
+    $.get(Veil_Fldr + 'retningslinje.js');
+    
     // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');
 

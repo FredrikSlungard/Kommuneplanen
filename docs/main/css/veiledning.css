@@ -12,7 +12,9 @@
   outline: none;
 }
 
-.active, .collapsible:hover {
+.active, 
+.collapsible:hover 
+{
   background-color: #34675c;
   color: white;
 }

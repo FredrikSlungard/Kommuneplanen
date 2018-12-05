@@ -69,6 +69,10 @@ Fjerner kulepunkter i lister <ul>*/
   padding-left: 15px;
 }
 
+.active {
+  color: #DBCA69;
+}
+
 /* Div for søketreffene */
 #søke_treff a:hover {
   color: #DBCA69;
@@ -97,4 +101,10 @@ Fjerner kulepunkter i lister <ul>*/
 
 .usynlig {
   display: none;
+}
+
+/* Oveskriftene i navigasjonen */
+#nav_innhold h1 {
+  border-top:1.5px solid #2c7873;
+  padding-top: 5px;
 }
