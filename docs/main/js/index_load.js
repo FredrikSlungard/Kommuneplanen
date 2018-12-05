@@ -130,7 +130,7 @@ $(function () {
     $.get(Veil_Fldr + 'definisjoner.js');
     $.get(Veil_Fldr + 'eventer.js');
 
-    $.get(Veil_Fldr + 'retningslinje_lenke.js');
+    $.get(Veil_Fldr + 'legg_til_lenker.js');
     $.get(Veil_Fldr + 'retningslinje.js');
     
     // Aktiverer søkefelt
