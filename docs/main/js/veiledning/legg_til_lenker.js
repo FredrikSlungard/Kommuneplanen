@@ -54,7 +54,8 @@ $(function () {
     
     // Teksten brukeren ser, inneholder referanse og <a> tag
     let Ny_HTML = $(Search_For).map(function (i, ord) {
-      let ref = ' href="#def_main' + ord + '">';
+      let overskrift = ord.replace(/[^A-Za-z0-9]/ig, '_');
+      let ref = ' href="#def_main' + overskrift + '">';
       return Start_HTML + ref + ord + Slutt_HTML;
     });
 

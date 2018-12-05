@@ -11,7 +11,7 @@ $(function () {
     // Finner innholdet som skal brukes i nedtrekkslisten
     let Overskrift = $(Definisjoner).filter(function (index, value) {
       let retn = $(value).text().toLowerCase();
-
+      
       if (retn.indexOf(Let_Etter) !== -1) {
         return $(value);
       };
@@ -19,6 +19,10 @@ $(function () {
 
     let Type_Overskrift = $(Overskrift).prop('nodeName').toLowerCase();
     let Innhold = $(Overskrift.nextUntil(Type_Overskrift));
+
+    if (Innhold === undefined) {
+      Innhold = $(Overskrift).last();
+    };
 
     return Innhold;
 
@@ -37,26 +41,15 @@ $(function () {
   Leter gjennom overskriftene i retningslinjene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
   Lag_Veiledning_Def = (Lenke_Trykket_På) => {
 
-    let liste_id = $(Lenke_Trykket_På).attr('href');
+    let liste_id = $(Lenke_Trykket_På).attr('href').replace('#','');
     let liste_div = '<div class="collapse" id=' + liste_id + '></div>'
     let veiledning = $(Flytt_Innhold_Def(Lenke_Trykket_På).wrapAll(liste_div));
-
-    // Ordner teksten hvis det første elementet er "vanlig tekst", velger som vanlig hvis nodenavnet er 'h4' og første item
-    if ($(veiledning).first().is(':header') == false) {
-
-      let Header = $('<h4>' + $(Lenke_Trykket_På).text() + '</h4>');
-
-      // Denne legges ikke riktig til, blir en del av det første itemet?
-      $(veiledning).first().prepend('<h4>' + $(Lenke_Trykket_På).text() + '</h4>');
-
-    };
 
     // Velg neste overskrift eller hovedoveskrift, hvis ikke velg frem til siste element
     $(veiledning).each(function (index, value) {
       let node_name = $(value).prop('nodeName').toLowerCase();
 
         if (node_name === 'h4') {
-          console.log($(value).html());
           let Header = $(value);
           let Neste = $(Header).nextUntil('h3, h4');
 
@@ -67,8 +60,15 @@ $(function () {
           $(value).replaceWith('<button class="collapsible">' + $(Header).text() + '</button>');
           $(Neste).wrapAll('<div class="content"></div>')
         };
+      });
 
-    });
+    // Ordner teksten hvis det første elementet er "vanlig tekst"
+    if ($(veiledning).first().is(':header') === false) {
+      let Header = $('<button class="collapsible">Definisjonen av ' + $(Lenke_Trykket_På).text() + '</button>');
+
+      $(Header).insertBefore($(veiledning).first());
+      $($(veiledning).first()).wrapAll('<div class="content"></div>')
+    };
   };
 
 });

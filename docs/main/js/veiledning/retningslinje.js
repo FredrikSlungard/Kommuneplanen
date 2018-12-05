@@ -43,6 +43,7 @@ $(function () {
 
     let Overskrift_Closest = $(Lenke_Trykket_På).prev(':header').first();
     let liste_id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
+
     let liste_div = '<div class="collapse" id=' + liste_id + '></div>'
     let veiledning = $(Flytt_Innhold(Lenke_Trykket_På).wrapAll(liste_div));
 

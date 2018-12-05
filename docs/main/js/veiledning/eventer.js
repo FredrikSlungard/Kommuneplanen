@@ -44,11 +44,13 @@ $(document).on('click', '.intern_lenke', function (e) {
 
   e.preventDefault()
   let Ref_ID = $(this).attr('href').replace('#', '');
-  let para_end = $(this).parent();
-  
+
   // Flytt innholdet hvis ID eksisterer fra før
   if (Ref_ID !== '' && $('#' + Ref_ID).length !== 0) {
+    let para_end = $(this).parent();
     $('#' + Ref_ID).insertAfter($(para_end));
+
+   
   }
 
   // Leter opp og henter innholdet fra definisjonene og bygger HTML streng
