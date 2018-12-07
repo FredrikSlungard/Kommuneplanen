@@ -10,8 +10,8 @@ $(function () {
 
     let Search_In = $('h1', '#bestemmelser');
     let Search_For = $('h2', '#retningslinje');
-    let Start_HTML = '<a class="retningslinje"';
-    let Slutt_HTML = '</a>'
+    let Start_HTML = '<button class="retningslinje btn btn-info"';
+    let Slutt_HTML = '</button>';
     
     // Teksten brukeren ser, inneholder referanse og <a> tag
     let Ny_HTML = $(Search_For).map(function (i, ord) {

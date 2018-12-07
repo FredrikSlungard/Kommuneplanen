@@ -1,4 +1,4 @@
-/* Viser nærmeste overskrift i navigasjonen slik at brukeren ser hvor de er */
+/* Viser overskriften som brukeren er på i siden. */
 $(function () {
   let Overskrifter = $('h1, h2', 'main');
 
@@ -6,7 +6,8 @@ $(function () {
     'use strict'
     let Curr_Location = $(window).scrollTop();
 
-    if (Curr_Location >= 10) {
+    //Destinasjon -= (windowHeight / 2); 
+    if (Curr_Location >= 110) {
       Overskrifter.sort(function (a, b) {
         let prev_Diff = Math.abs(Curr_Location - $(a).position().top);
         let curr_Diff = Math.abs(Curr_Location - $(b).position().top);
@@ -22,22 +23,12 @@ $(function () {
 
       return $(Overskrifter[0]);
     }
-    // Hvis scrollehøyden er for lav sorteres den feil, dette gjelder kun for lave scrolltall
+
+    // Hvis scrollehøyden er for lav sorteres den feil, dette gjelder kun for lave scrolltall (< 110)
     else {
-      Overskrifter.sort(function (a, b) {
-        let a_top = Math.abs(Curr_Location - $(a).position().top);
-        let b_top = Math.abs(Curr_Location - $(b).position().top);
 
-        if (a_top > b_top) {
-          return 1;
-        } else if (a_top < b_top) {
-          return -1;
-        } else {
-          return 0;
-        };
-      });
+      return $(Overskrifter).first();
 
-      return $('h1, h2', 'main').first();
     };
 
   };
@@ -55,8 +46,9 @@ $(function () {
         let Nav_Overskrift = $(value).text().toLowerCase(); 
 
         if (Closest_Heading.indexOf(Nav_Overskrift) !== -1) {
-
+          
           return $(value)
+
         };
       });
 
