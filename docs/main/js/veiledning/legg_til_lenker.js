@@ -51,7 +51,7 @@ $(function () {
     let Slutt_HTML = '</button>';
 
     let Search_In = $('h1', '#bestemmelser');
-    let Utdypende_Forklaring = ['Nåværende boligområder'];
+    let Utdypende_Forklaring = ['Nåværende boligområder', 'Boligområder – generelt'];
 
     // Teksten brukeren ser, inneholder referanse og <a> tag
     let Ny_HTML = Utdypende_Forklaring.map(function (ord) {

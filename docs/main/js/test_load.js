@@ -7,7 +7,7 @@ $(function () {
 
     let Fldr = 'main/html/bestemmelser/';
     let Filer = [
-      '1_plankrav',
+/*       '1_plankrav',
       '2_rekkefølgekrav',
       '4_forhold_gjeldende_plan',
       '5_kulturminne_kulturmiljø',
@@ -17,7 +17,7 @@ $(function () {
       '12_transport_parkering',
       '13_samfunnssikkerhet',
       '15_støy_luftforurensing',
-      '16_estetikk_utforming',
+      '16_estetikk_utforming', */
       '19_boligområder_generelt',
       '20_nåværende_boligområder',
       '22_lnf',
@@ -74,16 +74,16 @@ $(function () {
     let Bestemmelser = Hoved_Innholdet();
 
     // Last inn bestemmelsene
-/*     $.each(Bestemmelser, function (index, value) {
+    $.each(Bestemmelser, function (index, value) {
       $.get(value, function (data) {
       })
 
         .done(function (data) {
           $(data).appendTo('#bestemmelser')
         });
-    }); */
+    });
 
-    // Last inn veiledningen
+/*     // Last inn veiledningen
     $.each(Veiledning, function (index, value) {
       $.get(value, function (data) {
       })
@@ -106,7 +106,7 @@ $(function () {
     })
       .done(function (data) {
         $(data).appendTo('#definisjoner')
-      });
+      }); */
 
   };
 
@@ -123,13 +123,15 @@ $(function () {
     // Laster inn overskrifter og eventer i navigasjonen
     $.get(Nav_Fldr + 'navigasjon.js');
     $.get(Nav_Fldr + 'nav_event.js');
-    $.get(Nav_Fldr + 'vis_Plassering.js');
+    $.get(Nav_Fldr + 'vis_plassering.js');
 
     // Eventer for body (veiledning)
     $.get(Veil_Fldr + 'legg_til.js');
-    $.get(Veil_Fldr + 'retningslinje.js');
     $.get(Veil_Fldr + 'definisjoner.js');
     $.get(Veil_Fldr + 'eventer.js');
+
+    $.get(Veil_Fldr + 'legg_til_lenker.js');
+    $.get(Veil_Fldr + 'retningslinje.js');
 
     // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');

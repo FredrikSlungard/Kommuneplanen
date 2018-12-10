@@ -110,22 +110,4 @@ $(function () {
 
     });
   };
-  
-
-
-  /* Forhindrer scrolling når brukeren trykker på popover (href tar brukeren til toppen) */
-  $('.inter_popover').on('click', function (e) {
-    'use strict';
-    
-    e.preventDefault();
-
-    // Lager en ny popover hvis det ikke er noe der fra før
-    if (!$(this).data("bs.popover")) {
-      Lag_Popover(this);
-      $(this).popover('show');
-    };
-    
-    return true;
-
-  });
 });
