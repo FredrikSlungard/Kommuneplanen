@@ -83,7 +83,7 @@ $(function () {
         });
     });
 
-/*     // Last inn veiledningen
+    // Last inn veiledningen
     $.each(Veiledning, function (index, value) {
       $.get(value, function (data) {
       })
@@ -106,7 +106,7 @@ $(function () {
     })
       .done(function (data) {
         $(data).appendTo('#definisjoner')
-      }); */
+      });
 
   };
 
