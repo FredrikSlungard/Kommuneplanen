@@ -47,7 +47,7 @@ $(function () {
     'use strict';
 
     let Fldr = 'main/html/rettelse/';
-    let Start_HTML = '<button class="retningslinje btn btn-info"';
+    let Start_HTML = '<button class="utdypende btn btn-info"';
     let Slutt_HTML = '</button>';
 
     let Search_In = $('h1', '#bestemmelser');
@@ -55,9 +55,10 @@ $(function () {
 
     // Teksten brukeren ser, inneholder referanse og <a> tag
     let Ny_HTML = Utdypende_Forklaring.map(function (ord) {
-      let overskrift = Formater_Overskrift(ord).replace(/[^A-Za-z0-9]/ig, '_');
+      let overskrift = ord.replace(/[^A-Za-z0-9]/ig, '_');
+      let id = ' id="btnforklaring_' + overskrift + '"';
       let ref = ' href="#forklaring' + overskrift + '">';
-      return Start_HTML + ref + 'Utdypende forklaring for ' + ord.toLowerCase() + Slutt_HTML;
+      return Start_HTML + id + ref + 'Utdypende forklaring for ' + ord.toLowerCase() + Slutt_HTML;
     });
 
     // Let gjennom overskriftene og om det er noen utdypende forklaringen knyttet til overskriften

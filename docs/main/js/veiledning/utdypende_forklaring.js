@@ -1,69 +1,49 @@
-/* Setter inn de utdypende forklaringene under h1 overskriften den gjelder for.
-Programmet gjør følgende:
-
-1. Velger h1 overskriftene i kommuneplanen
-2. Leter opp hvilke bestemmelsen som har nye retningslinjer, h2 overskriftene har en del av bestemmelsene
-
-3. h1 i veiledningen er knappen brukeren ser
-  h2 er .collapsible (knappen med content)
-  alt det andre er content
+/* Setter inn de utdypende forklaringene under h1 overskriften den gjelder for. Sjekker hvilken overskrift som er nærmest og henter innholdet som stemmer overenst med overskriften.
 */
 $(function () {
-  Finn_Innhold_Liste = ($Kilde) => {
+  Finn_Innhold_Utdypende = ($Kilde) => {
     'use strict';
 
-    let Let_Etter = Formater_Overskrift($($Kilde).prev(':header').first()).toLowerCase();
-    let Retningslinjer = $('h2', '#retningslinje');
+    let Fldr = 'main/html/rettelse/';
+    let Overskrift = $($Kilde).prev('h1').first().text();
+    let Let_Etter = {'Boligområder – generelt': Fldr + '19_boligformål_generelt.html', 'Nåværende boligområder': Fldr + '20_nåværende_boligområder.html'};
 
-    // Finner innholdet som skal brukes i nedtrekkslisten
-    let Overskrift = $(Retningslinjer).filter(function (index, value) {
-      let retn = $(value).text().toLowerCase();
+    return $.get(Let_Etter[Overskrift])
+    .done(function( data ) {
 
-      if (retn.indexOf(Let_Etter) !== -1) {
-        return $(value);
-      };
+      let ID = $($Kilde).attr('href').replace('#', '');
+      let wrapper = '<div id="' + ID + '"></div>';
+
+      $(wrapper).insertAfter($Kilde);
+      return data
+    });
+  };
+
+
+  Lag_Utdypende_Forklaring = (Aktiv_Lenke) => {
+    'use strict'
+
+    let Innhold = Finn_Innhold_Utdypende(Aktiv_Lenke).done(function(data) {
+      // Div lages når den laster inn innholdet
+      let Destinasjon = $($(Aktiv_Lenke).attr('href')); 
+      $(Destinasjon).append(data);
     });
 
-    let Type_Overskrift = $(Overskrift).prop('nodeName').toLowerCase();
-    let Innhold = $(Overskrift.nextUntil(Type_Overskrift));
+    Innhold.done(function() {
+      let Dest = $($(Aktiv_Lenke).attr('href')).children();
 
-    return Innhold;
+      $(Dest).each(function (index, value) {
+        if ($(value).prop('nodeName').toLowerCase() === 'h3') {
+          let Neste = $(value).nextUntil('h3');
+          if (Neste.length === undefined) {
+            Neste = $(Dest).last();
+          };
 
-  };
+          $(value).replaceWith('<button class="collapsible">' + $(value).text() + '</button>');
+          $(Neste).wrapAll('<div class="content"></div>')
 
-  // Flytter veiledningen til etter lenken som brukeren trykket på
-  Flytt_Innhold = (Lenke) => {
-    let Innhold = Finn_Innhold_Liste(Lenke).clone();
-    let Hoved_Header = $(Innhold).prop('nodeName').toLowerCase();
-
-    $(Innhold).insertAfter($(Lenke));
-    return $(Innhold);
-
-  };
-
-  /* Leter opp innholdet som skal brukes i nedtrekkslisten.
-  Leter gjennom overskriftene i retningslinjene og returnerer innholdet til neste overskrift (eller slutten av dokumentet) */
-  Lag_Veiledning = (Lenke_Trykket_På) => {
-
-    let Overskrift_Closest = $(Lenke_Trykket_På).prev(':header').first();
-    let liste_id = 'veil' + $(Overskrift_Closest).text().replace(/[^A-Za-z0-9]/igm, '_');
-
-    let liste_div = '<div class="collapse" id=' + liste_id + '></div>'
-    let veiledning = $(Flytt_Innhold(Lenke_Trykket_På).wrapAll(liste_div));
-
-    // Velg neste overskrift eller hovedoveskrift, hvis ikke velg frem til siste element
-    $(veiledning).each(function (index, value) {
-      if ($(value).prop('nodeName').toLowerCase() === 'h3') {
-
-        let Neste = $(value).nextUntil('h2, h3');
-        if (Neste.length === undefined) {
-          Neste = $(veiledning).last();
         };
-
-        $(value).replaceWith('<button class="collapsible">' + $(value).text() + '</button>');
-        $(Neste).wrapAll('<div class="content"></div>')
-
-      };
+      });
     });
   };
 });

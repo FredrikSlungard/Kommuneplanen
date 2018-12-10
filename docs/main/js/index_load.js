@@ -132,6 +132,7 @@ $(function () {
 
     $.get(Veil_Fldr + 'legg_til_lenker.js');
     $.get(Veil_Fldr + 'retningslinje.js');
+    //$.get(Veil_Fldr + 'utdypende_forklaring.js');
     
     // Aktiverer søkefelt
     $.get(Nav_Fldr + 'search_page.js');

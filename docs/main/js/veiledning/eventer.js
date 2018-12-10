@@ -6,6 +6,7 @@ Ved å bruke document knyttes også dynamiske elementer til knappen
 */
 $(document).on('click', 'button', function (e) {
   'use strict';
+  let Ref_ID = $();
 
   switch(true) {
     case $(this).hasClass('collapsible'):
@@ -19,7 +20,7 @@ $(document).on('click', 'button', function (e) {
     // Viser veiledningsteksten for retningslinjer
     case $(this).hasClass('retningslinje'):
       e.preventDefault()
-      let Ref_ID = $(this).attr('href').replace('#', '');
+      Ref_ID = $(this).attr('href').replace('#', '');
 
       // Flytt innholdet hvis ID eksisterer fra før
       if (Ref_ID !== '' && $('#' + Ref_ID).length !== 0) {
@@ -36,6 +37,17 @@ $(document).on('click', 'button', function (e) {
       $('#' + Ref_ID).slideToggle('fast');
       break;
 
+    case $(this).hasClass('utdypende'):
+      e.preventDefault()
+      Ref_ID = $(this).attr('href').replace('#', '');
+
+      // Laster inn veiledningen hvis den ikke eksisterer fra før.
+      if (Ref_ID !== '' && $('#' + Ref_ID).length === 0) {
+        Lag_Utdypende_Forklaring(this);
+      };
+
+      $('#' + Ref_ID).slideToggle('fast');
+      break;
   };
 });
 
