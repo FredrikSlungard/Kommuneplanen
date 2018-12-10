@@ -42,6 +42,43 @@ $(function () {
     });
   };
 
+  // Legger til en knapp for de utdypende forklaringene
+  Lenke_Utdypende_Forklaring = () => {
+    'use strict';
+
+    let Fldr = 'main/html/rettelse/';
+    let Start_HTML = '<button class="retningslinje btn btn-info"';
+    let Slutt_HTML = '</button>';
+
+    let Search_In = $('h1', '#bestemmelser');
+    let Utdypende_Forklaring = ['Nåværende boligområder'];
+
+    // Teksten brukeren ser, inneholder referanse og <a> tag
+    let Ny_HTML = Utdypende_Forklaring.map(function (ord) {
+      let overskrift = Formater_Overskrift(ord).replace(/[^A-Za-z0-9]/ig, '_');
+      let ref = ' href="#forklaring' + overskrift + '">';
+      return Start_HTML + ref + 'Utdypende forklaring for ' + ord.toLowerCase() + Slutt_HTML;
+    });
+
+    // Let gjennom overskriftene og om det er noen utdypende forklaringen knyttet til overskriften
+    $(Search_In).each(function (i, overskrift) {
+      let lcase_Overskrift = $(overskrift).text().toLowerCase();
+      if (Utdypende_Forklaring.length !== 0) {
+
+        $(Utdypende_Forklaring).each(function (j, value) {
+
+          let lcase_veil = value.toLowerCase();
+
+          if (lcase_Overskrift === lcase_veil) {
+            $($(overskrift)).after(Ny_HTML[j]);
+
+            Ny_HTML.splice(j); // Reduserer antall loops
+            return;
+          };
+        });
+      };
+    });
+  };
 
   // Legger til nedtrekksliste hvis det er en av hovedoverskriftene i definisjonene
   Lenke_Til_Definisjonene = () => {
@@ -74,6 +111,7 @@ $(function () {
     });
   }; 
 
+  Lenke_Utdypende_Forklaring();
   Lenke_Til_Retningslinje();
   Lenke_Til_Definisjonene();
 });

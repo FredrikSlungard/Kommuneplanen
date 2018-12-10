@@ -62,3 +62,13 @@ $(document).on('click', '.intern_lenke', function (e) {
 
   $('#' + Ref_ID).slideToggle('fast');
 });
+
+
+// Tar brukeren til lokasjonen som har søketeksten
+$(document).on('scroll', function (event) {
+  let Temp = Overskrift_Navigasjon().children('a');
+
+  $('*', '#nav_innhold').removeClass('active');
+  $(Temp).addClass('active');
+
+});
